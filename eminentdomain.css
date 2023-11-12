@@ -1,0 +1,2096 @@
+/**
+ *------
+ * BGA framework: Ã‚Â© Gregory Isabelli <gisabelli@boardgamearena.com> & Emmanuel Colin <ecolin@boardgamearena.com>
+ * EminentDomain implementation : Ã‚Â© Alena Laskavaia <laskava@gmail.com>
+ *
+ * This code has been produced on the BGA studio platform for use on http://boardgamearena.com.
+ * See http://en.boardgamearena.com/#!doc/Studio for more information.
+ * -----
+ *
+ * eminentdomain.css
+ *
+ * EminentDomain stylesheet
+ *
+ */
+
+/*
+    This is the CSS stylesheet of your game User Interface.
+    
+    Styles defined on this file will be applied to the HTML elements you define in your
+    HTML template (eminentdomain_eminentdomain.tpl), and to HTML elements you create dynamically
+    (in eminentdomain.js).
+    
+    Usually, you are using CSS to:
+    
+    1Ã‚Â°) define the overall layout of your game
+        (ex: place the board on the top left, place player's hand beside, place the deck on the right, ...).
+
+    2Ã‚Â°) create your CSS-sprites:
+        All images of your games should be gathered into a small number of image files. Then, using
+        background-image and background-position CSS properties, you create HTML blocks that can 
+        display these images correctly (see example below).
+    
+    3Ã‚Â°) ... anything else:
+        It is really easy to add and remove CSS classes dynamically from your Javascript with
+        dojo.addClass and dojo.removeClass. It is also easy to check if an element has a class
+        (dojo.hasClass) or to get all elements with a specific class (dojo.query). This is why,
+        very often, using CSS classes for the logic of your user interface allow you to do complex
+        thing easily.
+        
+        
+     Note: on the production platform, this file will be compressed and comments will be removed.
+           Consequently, don't hesitate to put as many comments as necessary.
+*/
+
+@import url(../../../css/csslayer.css); /* Note: you must not use any @import directive other than this one */
+
+
+/********* You can start writing your CSS below this line: **********/
+@import url(https://fonts.googleapis.com/css?family=Russo+One);
+
+
+
+
+html {
+
+    /*background: url(img/back-main-gray.jpg);*/
+    background: url(img/space.jpg);
+}
+
+.mode_3d #game_play_area_background {
+   background: url(img/back-main-gray.jpg);
+}
+
+#page-title {
+    border-radius: 10px;
+}
+
+.thething {
+	position: relative;
+	font-family: 'Russo One', sans-serif;
+	margin: auto;
+	/* max-width: 1650px;*/
+	/*overflow: auto;*/
+	position: relative;
+	transform-origin: top left;
+	transition: transform 1000ms ease;
+	transform: translateZ(0px);
+}
+
+.thething  li, .dijitTooltip li {
+	list-style: inherit;
+}
+
+.endofgamewarning {
+	text-align: center;
+	font-size: x-large;
+	color: white;
+	background-color: purple;
+	display: none;
+}
+
+.end_of_game .endofgamewarning {
+	display: block;
+}
+
+.anchor {
+	position: relative;
+	width: 100%; 
+	overflow-x: auto;
+	overflow-y: hidden;
+	margin: auto;
+	/* text-align: center; */
+}
+
+.mode_3d .anchor {
+	overflow: visible;
+}
+
+
+.mode_3d .thething {
+	overflow: visible;
+}
+
+.bboard {
+    z-index: 30;
+}
+
+.bboard>* {
+	display: inline-block;
+}
+
+.selection_area,.discard_display,.deck_display {
+	position: relative;
+	max-width: max-content;
+    margin: auto;
+    min-width: 1020px;
+}
+
+.shadow {
+	-moz-box-shadow: 1px 1px 2px 1px #222;
+	-webkit-box-shadow: 1px 1px 2px 1px #222;
+	-o-box-shadow: 1px 1px 2px 1px #222;
+	box-shadow: 1px 1px 2px 1px #222;
+}
+
+.active_slot:hover {
+	box-shadow: 0px 0px 1px 3px purple !important;
+}
+
+.active_slot {
+	cursor: pointer;
+    box-shadow: 0px 0px 4px 2px white !important;
+}
+
+.selected {
+	cursor: pointer;
+	box-shadow: 0px 0px 4px 2px blue !important;
+}
+.client_selectCardToRemove .hand .selected, .toremove, .playerTurnDiscard .hand .selected, .playerTurnPreDiscard .hand .selected{
+	filter: grayscale(100%);
+	box-shadow: 0px 0px 4px 2px red !important;
+}
+
+.tableau .activatable.state_0 {
+	filter: grayscale(100%);
+}
+
+.selected  .selected {
+	box-shadow: none !important;
+}
+
+#generalactions .blinking.bgabutton {
+	display: inline-block;
+}
+
+
+.semitransparent {
+	background: rgba(255, 255, 255, 0.5);
+}
+
+
+	
+
+
+
+
+.player_board_inner {
+	/* background-color: #f0f1f0;
+	background-color: transparent;*/
+	background: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+
+   /* border-image: url(img/bordered_small.png) 15%; */
+    color: #dbe3ea;
+    border-width: 2px;
+    border-style: solid;
+    border-color: gray;
+    border-radius: 5px;
+    box-shadow: 3px 5px 20px 4px #3b3b3b;
+}
+
+.player-name {
+	/* background-color: inherit; */
+	text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px gray, 0 0 30px grey, 0 0 40px grey, 0 0 55px black, 0 0 75px black;
+}
+
+.player_score {
+	background-color: inherit;
+	height: 23px;
+}
+
+.player-board {
+	background-color: transparent;
+}
+
+
+.roundedbox {
+	background-color: #f0f1f0;
+}
+
+.roundedbox .roundedbox_main{
+	background-color: #f0f1f0;
+}
+
+
+
+
+.title-hint {
+	font-size: 50%;
+	position: relative;
+	top: 1px;
+	line-height: 10px;
+}
+
+
+
+.textoverlay {
+	color: antiquewhite;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	font-weight: bold;
+	font-size: large;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	line-height: 32px;
+}
+
+.supply_counter {
+    color: grey;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-weight: bold;
+    font-size: 12px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 16px;
+}
+.supply_counter::before {
+	content: "x ";
+}
+
+.inlineblock {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.center {
+	margin-right: auto;
+	margin-left: auto;
+}
+
+/* tooltips */
+
+.midSizeDialog {
+    max-width: 700px;
+}
+
+.tooltipimage {
+	display: inline-block;
+}
+
+.tooltiptext   {
+	display: inline-block;
+	vertical-align: top;
+
+	/* text-shadow: 0 0 2px white; */
+	padding: 10px;
+}
+
+.tooltiptitle {
+	font-weight: bold;
+	font-size: 110%;
+	margin-left: 10px;
+	text-transform: uppercase;
+}
+
+.tooltipcontainer {
+    background: black;
+    color:  #e2e2e2;
+    font-family: 'Russo One', sans-serif;
+
+}
+.tundra .dijitTooltipContainer {
+	background: black;
+    color:  #e2e2e2;
+}
+.dijitTooltipContainer a.bgabutton_gray {
+	color: unset;
+}
+
+.card_tooltipcontainer {
+	width: 700px;
+}
+.card_tooltipcontainer .tooltipimage {
+	float: left;
+	vertical-align: top;
+	display: block;
+}
+.card_tooltipcontainer .tooltiptext {
+	width: calc(100% - 350px);
+    max-width: unset;
+    margin-left: 290px;
+    height: 360px;
+    vertical-align: top;
+    border-image: url(img/bordered_small.png) 6%;
+    border-width: 20px;
+    padding: 10px;
+    border-style: solid;
+    display: block;
+}
+
+/*
+.card:hover {
+	scale: 2.0;
+	transition: ease;
+}
+*/
+
+.counter {
+	display: inline-block;
+	width: 32px;
+	height: 32px;
+	margin-left: 0px;
+	font-family: 'Russo One', sans-serif;
+}
+
+.counter:FIRST-CHILD {
+	margin-left: 1px;
+}
+
+
+.miniboard .counter_hand {
+	margin-top: 5px;
+	margin-left: 3px;
+	vertical-align: top;
+	display: inline-block;
+}
+
+.miniboard_row > * {
+	display: inline-block;
+}
+
+.token {
+	/*
+	outline-color: black;
+	outline-style: solid;
+	outline-width: thin;*/
+	
+}
+
+.slot {
+	text-align: left;
+	/*
+	outline-color: white;
+	outline-style: solid;
+	outline-width: 1px;
+    */
+	position: absolute;
+}
+/*
+.slot:hover {
+	
+	outline-color: white;
+	outline-style: solid;
+	outline-width: 2px;
+	
+}
+
+*/
+
+/*
+.card.active_slot {	
+	cursor: pointer;
+	animation: pulsescale_anim 2s infinite;
+}
+*/
+
+.board, .board2 {
+	position: relative;
+	width: 1020px;
+	height: 256px;
+	margin: auto;
+	margin-bottom: 0px;
+    display: block;
+}
+
+
+.board {
+	background-image: url(img/board.jpg);
+	-webkit-background-size: cover;
+ 	-moz-background-size: cover;
+ 	-o-background-size: cover;
+	background-size: cover;
+	background-position: -1px -1px;
+	background-repeat:  no-repeat;
+}
+.pboard_space,.common_space {
+	position: relative;
+    height: auto;
+    display: block;
+    min-width: 1020px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pboard_space  {
+	width: 100%;
+	max-width: max-content;
+}
+.common_space  {
+	width: 100%;
+}
+
+.slot_board {
+	top: 30px;
+}
+
+.slot_board_s, .slot_board_1 {
+	left: 196px;
+}
+
+.slot_board_w, .slot_board_2 {
+	left: 360px;
+}
+.slot_board_c, .slot_board_3 {
+	left: 520px;
+}
+.slot_board_p, .slot_board_4 {
+	left: 680px;
+}
+.slot_board_r, .slot_board_5 {
+	left: 846px;
+}
+
+.slot_board > * {
+	position: absolute;
+	display: block;
+}
+
+.learning_variant_on .slot_board_r{
+	background-image: url(img/cards.jpg);
+	/* background-color: gray; */
+	background-position: 100% 46.2%;
+	color: gray;
+	text-align: center;
+}
+#supply_planets, #discard_planets, .supply_tech, .slot_card {
+	color: #dbe3ea;
+	border-width: 2px;
+	/* border-style: solid; */
+	border-color: gray;
+	border-radius: 5px;
+	box-shadow: 3px 5px 20px 4px #3b3b3b;
+}
+
+.hand_area{
+	position: relative;
+    margin: auto;
+    min-width: 1020px;
+}
+
+.hand {
+	position: relative;
+	/* margin: auto; */
+	/* text-align: center; */
+    min-height: 200px;
+	margin-top: 0px;
+	margin-bottom: 5px;
+	vertical-align: top;
+	padding: 5px;
+	padding-bottom: 0px;
+	padding-right: 0px;
+	/*
+    width: max-content;
+    max-width: 100%;
+    */
+    min-width: 1020px;
+	text-align: center;
+	transition: .5s ease;
+	background: rgba(255, 255, 255, 0.2);
+	border-radius: 10px;
+}
+
+.hand  > * {
+	display: inline-block;
+	margin-right: 5px;
+	margin-bottom: 5px;
+}
+
+.mode_3d .hand_area {
+	position: fixed !important;
+	bottom: 0px;
+}
+
+.hand_icon {
+	float: left;
+	position: absolute;
+    bottom: 35px;
+    left: 20px;
+	vertical-align: top;
+	width: 10px;
+	z-index: 100;
+}
+
+.miniitem {
+	position: relative;
+	display: inline-block;
+	width: 36px;
+	height: 32px;
+	/*color: black;*/
+	line-height: 32px;
+	margin-top: 5px;
+	vertical-align: middle;
+}
+
+.miniitem>* {
+	position: absolute;
+}
+
+.card_icon {
+	width: 32px;
+    height: 32px;
+}
+
+.empire {
+	margin-top: 0px;
+	margin-bottom: 10px;
+	vertical-align: top;
+	position: relative;
+	border-style: solid;
+    border-width: 1px;
+    border-color: #0d7380;
+    box-shadow: 3px 3px 10px 3px #3b3b3b;
+    border-radius: 10px;
+    padding: 5px 0px 0px 10px;
+  	min-height: 200px;
+  	min-width: 1020px;
+}
+
+.tableau {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-items: flex-start;
+}
+
+.setaside:empty, .deck_display:empty, .discard_display:empty {
+	display: none;
+}
+
+.setaside:before {
+    content: attr(data-title);
+    display: inline-block;
+    font-weight: 900;
+    font-size: 18px;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px gray, 0 0 30px grey, 0 0 40px grey, 0 0 55px black, 0 0 75px black;
+    text-transform: uppercase;
+    transform: rotate(90deg) translateX(-25px);
+    transform-origin: 0.5em center 0;
+    width: 70px; 
+    margin-right: -20px;
+    white-space:nowrap; 
+    overflow-wrap: none;
+    height: 80px;
+}
+
+.deck_display:before, .discard_display:before {
+    content: attr(data-title);
+    display: inline-block;
+    font-weight: 900;
+    font-size: 18px;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px grey, 0 0 30px grey, 0 0 40px grey, 0 0 55px black, 0 0 75px black;
+    text-transform: uppercase;
+    transform: rotate(90deg) translateX(-25px);
+    transform-origin: 0.5em center 0;
+    width: 70px;
+    margin-right: -20px;
+    white-space: nowrap;
+    height: 80px;
+    vertical-align: top;
+}
+
+.tableau>* {
+	display: inline-block;
+	position: relative;
+	vertical-align: top;
+}
+
+.slot_action {
+	display: none;
+}
+
+.own .slot_action {
+	display: inline-block;	
+}
+
+
+.side_title_wrapper {
+    min-height: 200px;
+    max-width: 60px;
+    position: absolute;
+    top: 5px;
+    overflow-wrap: break-word;
+}
+.side_title {
+    font-weight: 900;
+    font-size: 18px;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px gray, 0 0 30px grey, 0 0 40px grey, 0 0 55px black, 0 0 75px black;
+    text-transform: uppercase;
+    transform: rotate(90deg) translateX(-25px);
+    transform-origin: 0.5em center 0;
+    max-width: 210px; 
+    margin-right: -160px;
+    overflow-wrap: break-word;
+    height: 80px;
+}
+.side_title_wrapper + div {
+	margin-left: 60px;
+}
+
+.tableau_fighter_player {
+	position: relative;
+	vertical-align: top;
+	margin-left: -5px;
+	display: none;
+}
+
+.tableau_fighter_player_row {
+	position: relative;
+
+}
+.tableau_fighter {
+	counter-reset: fighter;
+	position: relative;
+	display: inline-block;
+	min-width: 50px;
+	min-height: 50px;
+}
+
+.tableau_fighter  > .fighter {
+	display: inline-block;
+ 	position: absolute;
+	vertical-align: top;
+	margin-left: -5px;
+	margin-right: -10px;
+    margin-bottom: -16px;
+}
+
+.tableau_fighter > .fighter:last-child{
+	display: inline-block;
+}
+
+
+.tableau_fighter > .fighter{
+	counter-increment: fighter;
+}
+
+.tableau_fighter   > .fighter::after {
+	content: counter(fighter);
+}
+
+.tableau_fighter   > .fighter::after {
+	width: 100%;
+	height: 100%; 
+	text-align: center;
+	line-height: 50px;
+	position: absolute;
+	color: antiquewhite;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	font-weight: bold;
+	font-size: large;
+	font-family: 'Russo One', sans-serif;
+}
+
+
+
+ 
+
+/* colors */
+
+/* red */
+.color_ff0000 {
+	color: #ff0000;
+}
+
+
+/* green */
+.color_008000 {
+color: #008000;
+}
+
+
+/* black */
+.color_000000 {
+	color: #000000;
+}
+
+
+
+/* yellow */
+.color_ffa500 {
+color: #ffa500;
+}
+
+
+
+/* blue */
+.color_0000ff {
+color: #0000ff;
+}
+
+
+/* purple */
+.color_773300 {
+color: #773300;
+}
+
+.yellow {
+	color: #ffff00;
+}
+
+/* icons */
+
+.icon,.token,.resource {
+	background-image: url(img/tokens.png);
+}
+.icon.warfare,.icon.W {
+	background-position: 0% 50%;
+}
+
+.icon.colonize,.icon.C{
+	background-position: 0% 0%;
+}
+.icon.politics{
+	background-position: 20% 0%;
+}
+.icon.produce,.icon.P{
+	background-position: 40% 0%;
+}
+.icon.research,.icon.R{
+	background-position: 60% 0%;
+}
+.icon.survey,.icon.S{
+	background-position: 80% 0%;
+}
+.icon.trade,.icon.T{
+	background-position: 100% 0%;
+}
+
+.resource{
+	width:  64px;
+	height: 64px;
+	background-size: calc(64px * 6);
+	vertical-align: middle;
+	border-radius: 50%;
+}
+
+.resource_f{
+	background-position: 0% 100%;
+}
+.resource_s{
+	background-position: 40% 100%;
+}
+.resource_i{
+	background-position: 20% 100%;
+}
+.resource_w{
+	background-position: 60% 100%;
+}
+
+.card_planet .fighter.state_1 {
+    position: absolute;
+    bottom: 0px;
+}
+
+.tech.has_slots .resource {
+	margin-top: 125px;
+    margin-left: 5px;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+}
+
+/* used planet by SM req */
+.planet.state_13 {
+    opacity: 0.5;
+    outline: red dashed;
+}
+
+.card_planet .resource.state_2 {
+	position: absolute;
+	bottom: -10px;
+}
+
+.card_planet .resource ~ .resource {
+	bottom: 2px;
+}
+
+.card_planet.slots_fw  .resource_w {
+	left: 35px;
+	bottom: -10px;
+}
+
+.card_planet.slots_fw  .resource_w ~ .resource_w {
+	left: 35px;
+	bottom: 2px;
+}
+
+
+.card_planet.slots_fw .resource_f {
+	bottom: -10px
+}
+
+.card_planet.slots_fw .resource_f ~.resource_f {
+	bottom: 2px
+}
+
+.card .resource.state_10 {
+	position: relative;
+	display: inline-block;
+}
+
+
+.tableau > .card {
+	margin-right: 10px;
+	position: relative;
+}
+
+
+/* cards stay on tableau until end of turn in escalation */
+.tableau > .card.state_12 {
+		filter: grayscale(100%);
+}
+
+
+
+.stock_resource {
+    position: absolute;
+    z-index: 15;
+    left: 40px;
+}
+
+.stock_fighter {
+   /* position: absolute; */
+    font-size: x-large;
+}
+.stock_fighter > .fighter {
+	position: absolute;
+}
+
+.stock_fighter .fighter_j1:nth-child(-n+10) {
+   display: none; 
+}
+
+
+.vp {
+	background-position: 78% 45%;
+    background-image: url(img/tokens.png);
+    width: 32px;
+    height: 32px;
+	background-size: calc(42px * 6);
+}
+
+.icon.vp {
+    transform: rotateZ(45deg) translateX(-10px) translateY(15px);
+    transform-origin: center bottom;
+    width: 42px;
+    height: 42px;
+    background-size: calc(42px * 6);
+}
+
+.counter{
+	z-index: 30;	
+}
+.vp_counter {
+	margin-left: 10px;
+
+}
+
+.fighter{
+	background-position: 20% 50%;
+	background-image: url(img/tokens.png);
+}
+
+.fighter{
+	width:  50px;
+	height: 50px;
+	background-size: calc(50px * 6);
+}
+
+.bgabutton > .fighter, .logitem.fighter {
+	width:  32px;
+	height: 32px;
+	background-size: calc(32px * 6);
+}
+
+.card .fighter::after {
+	content: "";
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background-image: url(img/tokens.png);
+	width: 50px;
+	height: 50px;
+	background-size: calc(50px * 6);
+}
+
+.fighter_F, .fighter_j1, .fighter_F::after {
+	background-position: 20% 50%;
+}
+
+.fighter_B, .fighter_B::after {
+	background-position: 60% 50%;
+}
+
+.fighter_D, .fighter_D::after {
+	background-position: 40% 50%;
+}
+
+.fighter_j1,  .fighter_F, .card .fighter_F::after 	{
+	filter: drop-shadow(0px 1px 2px red) drop-shadow(0px 0px 4px white);
+}
+
+.fighter_B,.card  .fighter_B::after {
+	filter: drop-shadow(0px 1px 2px yellow) drop-shadow(0px 0px 4px white);
+}
+
+.fighter_D,.card .fighter_D::after {
+	filter: drop-shadow(0px 1px 2px white) drop-shadow(0px 0px 4px white);
+}
+.stock_fighter .fighter {
+	filter: none;
+}
+
+
+/* Elite Squadron */
+.card_tech_E_40 .fighter_D{
+    position: absolute;
+	top: 70px;
+	left: 50px;
+}
+.card_tech_E_40 .fighter_F{
+    position: absolute;
+	top: 100px;
+	left: 20px;
+}
+.card_tech_E_40 .fighter_F ~ .fighter_F{
+	left: 80px;
+}
+
+.tableau_fighter_player .fighter{
+	width: 42px;
+    height: 32px;
+    background-size: calc(48px * 6);
+    display: inline-block;
+    background-position: 20% 50%;
+}
+
+.fighter_counter {
+    text-align:  right;
+}
+
+.card_planet .fighter{
+	margin-right: -20px;
+	display: inline-block;
+}
+
+.card_planet.rslots_1 .fighter{
+		margin-left: 45px;
+}
+
+
+.fleet + .fleet {
+	display: none !important;
+}
+
+.bgaimagebutton {
+	padding: 0px 12px;
+}
+
+
+.bgabutton_blue {
+	box-shadow: 1px 1px 2px 1px #222;
+	/*border: none;*/
+}
+
+.icon{
+	display: inline-block;
+	width:  32px;
+	height: 32px;
+	background-size: calc(32px * 6);
+	vertical-align: middle;
+}
+
+.wrapped_icon {
+	background-color: #d9d9d9;
+	border-radius: 20px;
+	height: 22px;
+	width: 22px;
+	border-width: 3px;
+	border-color: #929292;
+	border-style: inset;
+	position: relative;
+}
+.wrapped_icon > * {
+	position: absolute;
+	top: -9px;
+	left: -4px;
+}
+
+.inline {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.bgabutton > *, .head_infomsg_item > *{
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.bgaimagebutton > * {
+	line-height: 32px;
+}
+
+.bgabutton .icon{
+	display: inline-block;
+	width: 32px;
+    height: 32px;
+    background-size: calc(32px * 6);
+}
+
+.bgabutton .icon.role{
+	display: inline-block;
+	width: 64px;
+    height: 64px;
+    background-size: calc(64px * 6);
+}
+
+.thething .miniboard {
+	display: none;
+}
+
+.miniboard .icon{
+	text-align: right;
+	color: white;
+	margin-left: -1px;
+}
+.tooltipimage.icon {
+	width:  64px;
+	height: 64px;
+	background-size: calc(64px * 6);
+}
+
+/* cards */
+
+.cardicon {
+	width: 16px;
+	height: 24px;
+	border-radius: 4px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: orange;
+	background-color: #d3d7cf;
+	position: absolute;
+}
+
+.discard_icon .cardicon {
+    background-color: #60929f;
+}
+
+/*
+.miniboard .discard .card {
+	vertical-align: top;
+	width: calc(400px * 0.1);
+	height: calc(568px * 0.1);
+	background-size: calc(400px * 4 * 0.1);
+}*/
+
+.card {
+	background-image: url(img/cards.jpg);
+	border-radius: 10px;
+	box-shadow: 1px 1px 1px 0px #222;
+	z-index: 20;
+	width: 400px;
+	height: 568px;
+	background-size: calc(400px * 4); 
+	color: white;
+	font-weight: bolder;
+	font-size: x-small;
+	background-clip: content-box;
+}
+
+.mode_3d .card {
+	transform: translateZ(3px);
+}
+
+.hand .card, .thething .card, .slot_board, .miniboard .card,  .log .card, .slot_card  {
+	width: calc(400px * 0.35);
+	height: calc(568px * 0.35);
+	background-size: calc(400px * 4 * 0.35); 
+}
+
+/*
+.miniboard .card {
+	width: calc(400px * 0.1);
+	height: calc(568px * 0.1);
+	background-size: calc(400px * 4 * 0.1); 
+}
+*/
+
+/* when 8 crads in hand 
+.card:nth-last-child(8):first-child ~ .card {
+	margin-left: -21px;
+}
+.card:nth-last-child(9):first-child ~ .card {
+	margin-left: -28px;
+}
+
+*/
+
+.slot_board .card{
+	position: absolute;
+	
+}
+
+.slot_board .counter{
+    position: absolute;
+    top: 205px;
+    left: 60px;
+    z-index: 100;
+}
+
+.card_bottom {
+	background-image: none;
+    background-color: transparent;
+}
+
+
+.tooltipcontainer .card {
+	width: calc(400px * 0.7);
+	height: calc(568px * 0.7);
+	background-size: calc(400px * 4 * 0.7); 
+}
+.tooltipcontainer .scenario.card {
+	width: calc(400px * 0.7);
+	height: calc(568px * 0.7);
+	background-size: calc(400px * 6 * 0.7); 
+}
+
+
+.card_role_warfare {
+		background-position: 99% calc(100% / 13 * 12);
+}
+.card_role_produce {
+		background-position: 0% calc(100% / 13 * 12);
+}
+.card_role_colonize {
+		background-position: 66.6% calc(100% / 13 * 12);
+}
+.card_role_research {
+		background-position: 33% calc(100% / 13 * 12);
+}
+.card_role_politics {
+		background-position: 33% 100%;
+}
+.card_role_survey {
+		background-position: 0% 100%;
+}
+
+.pboard_space .card_role_research ~ .card_role_research, 
+.pboard_space .card_role_warfare ~ .card_role_warfare,
+.pboard_space .card_role_colonize ~ .card_role_colonize,
+.pboard_space .card_role_survey ~ .card_role_survey,
+.pboard_space .card_role_produce ~ .card_role_produce  
+{
+	margin-left: -120px;
+}
+
+.card_planet {
+		background-image: url(img/planets.jpg);
+	
+}
+
+.card_planet.state_0 {
+		background-image: url(img/planets_back.jpg);
+		z-index: 30;
+		transform: translateZ(5px);	
+}
+
+.tooltipcontainer .card.card_planet {
+	width: calc(400px * 0.7);
+	height: calc(568px * 0.7);
+	background-size: calc(400px * 9 * 0.7); 
+}
+
+.card_planet_0_1 {
+	background-position: calc(100% / 8 * 1) 100%; 
+}
+
+.card_planet_0_2 {
+	background-position: calc(100% / 8 * 2 - 2px) 100%; 
+}
+
+.card_planet_0_3 {
+	background-position: calc(100% / 8 * 3 - 3px) 100%; 
+}
+
+.card_planet_0_4 {
+	background-position: calc(100% / 8 * 4.04) calc(100% + 0px);
+}
+
+
+.card_planet_0_5 {
+	background-position: calc(100% / 8 * 5.05) 100%; 
+}
+
+.card_planet_0_6 {
+	background-position: calc(100% / 8 * 6.06) 100%; 
+}
+
+.card_planet_0_2.state_0, .card_planet_0_4.state_0 {
+	background-position: calc(100% / 8 * 3 - 18px) 100%; 
+}
+
+.card_planet_0_3.state_0, .card_planet_0_5.state_0 {
+	background-position: calc(100% / 8 * 2) 100%; 
+}
+
+.card_planet_0_1.state_0, .card_planet_0_6.state_0 {
+	background-position: calc(100% / 8 * 4 - 38px) 100%; 
+}
+
+.card_planet.sprite_planetsE  {
+	background-image: url(img/planetsE.jpg);
+}
+.thething .card_planet.sprite_planetsE  {
+	width: calc(400px * 0.35);
+	height: calc(560px * 0.35);
+	background-size: calc(400px * 4 * 0.35);
+}
+.tooltipcontainer .card_planet.sprite_planetsE {
+	width: calc(400px * 0.7);
+	height: calc(560px * 0.7);
+	background-size: calc(400px * 4 * 0.7); 
+}
+
+.sprite_planetsE_1 { background-position: calc(100% / 3 * 0) calc(100% / 7 * 0);}
+.state_0.sprite_planetsE_1 { background-position: calc(100% / 3 * 1) calc(100% / 7 * 0);}
+.sprite_planetsE_3 { background-position: calc(100% / 3 * 2) calc(100% / 7 * 0);}
+.state_0.sprite_planetsE_3 { background-position: calc(100% / 3 * 3) calc(100% / 7 * 0);}
+.sprite_planetsE_5 { background-position: calc(100% / 3 * 0) calc(100% / 7 * 1);}
+.state_0.sprite_planetsE_5 { background-position: calc(100% / 3 * 1) calc(100% / 7 * 1);}
+.sprite_planetsE_7 { background-position: calc(100% / 3 * 2) calc(100% / 7 * 1);}
+.state_0.sprite_planetsE_7 { background-position: calc(100% / 3 * 3) calc(100% / 7 * 1);}
+.sprite_planetsE_9 { background-position: calc(100% / 3 * 0) calc(100% / 7 * 2);}
+.state_0.sprite_planetsE_9 { background-position: calc(100% / 3 * 1) calc(100% / 7 * 2);}
+.sprite_planetsE_11 { background-position: calc(100% / 3 * 2) calc(100% / 7 * 2);}
+.state_0.sprite_planetsE_11 { background-position: calc(100% / 3 * 3) calc(100% / 7 * 2);}
+.sprite_planetsE_13 { background-position: calc(100% / 3 * 0) calc(100% / 7 * 3);}
+.state_0.sprite_planetsE_13 { background-position: calc(100% / 3 * 1) calc(100% / 7 * 3);}
+.sprite_planetsE_15 { background-position: calc(100% / 3 * 2) calc(100% / 7 * 3);}
+.state_0.sprite_planetsE_15 { background-position: calc(100% / 3 * 3) calc(100% / 7 * 3);}
+.sprite_planetsE_17 { background-position: calc(100% / 3 * 0) calc(100% / 7 * 4);}
+.state_0.sprite_planetsE_17 { background-position: calc(100% / 3 * 1) calc(100% / 7 * 4);}
+.sprite_planetsE_19 { background-position: calc(100% / 3 * 2) calc(100% / 7 * 4);}
+.state_0.sprite_planetsE_19 { background-position: calc(100% / 3 * 3) calc(100% / 7 * 4);}
+.sprite_planetsE_21 { background-position: calc(100% / 3 * 0) calc(100% / 7 * 5);}
+.state_0.sprite_planetsE_21 { background-position: calc(100% / 3 * 1) calc(100% / 7 * 5);}
+.sprite_planetsE_23 { background-position: calc(100% / 3 * 2) calc(100% / 7 * 5);}
+.state_0.sprite_planetsE_23 { background-position: calc(100% / 3 * 3) calc(100% / 7 * 5);}
+.sprite_planetsE_25 { background-position: calc(100% / 3 * 0) calc(100% / 7 * 6);}
+.state_0.sprite_planetsE_25 { background-position: calc(100% / 3 * 1) calc(100% / 7 * 6);}
+.sprite_planetsE_27 { background-position: calc(100% / 3 * 2) calc(100% / 7 * 6);}
+.state_0.sprite_planetsE_27 { background-position: calc(100% / 3 * 3) calc(100% / 7 * 6);}
+.sprite_planetsE_29 { background-position: calc(100% / 3 * 0) calc(100% / 7 * 7);}
+.state_0.sprite_planetsE_29 { background-position: calc(100% / 3 * 1) calc(100% / 7 * 7);}
+
+
+.card.sprite_tilesE  {
+	background-image: url(img/tilesE.jpg);
+}
+.thething .card.sprite_tilesE  {
+	width: calc(400px * 0.35);
+	height: calc(560px * 0.35);
+	background-size: calc(400px * 4 * 0.35);
+}
+.tooltipcontainer .card.sprite_tilesE {
+	width: calc(400px * 0.7);
+	height: calc(560px * 0.7);
+	background-size: calc(400px * 4 * 0.7); 
+}
+
+.sprite_tilesE_1 { background-position: calc(100% / 3 * 0) calc(100% / 3 * 0);}
+.sprite_tilesE_2 { background-position: calc(100% / 3 * 1) calc(100% / 3 * 0);}
+.sprite_tilesE_3 { background-position: calc(100% / 3 * 2) calc(100% / 3 * 0);}
+.sprite_tilesE_4 { background-position: calc(100% / 3 * 3) calc(100% / 3 * 0);}
+.sprite_tilesE_5 { background-position: calc(100% / 3 * 0) calc(100% / 3 * 1);}
+.sprite_tilesE_6 { background-position: calc(100% / 3 * 1) calc(100% / 3 * 1);}
+.sprite_tilesE_7,.fleet_advanced { background-position: calc(100% / 3 * 2) calc(100% / 3 * 1);}
+.sprite_tilesE_8 { background-position: calc(100% / 3 * 3) calc(100% / 3 * 1);}
+.state_0.sprite_tilesE_2 { background-position: calc(100% / 3 * 0) calc(100% / 3 * 2);}
+.state_0.sprite_tilesE_1 { background-position: calc(100% / 3 * 1) calc(100% / 3 * 2);}
+.state_0.sprite_tilesE_4 { background-position: calc(100% / 3 * 2) calc(100% / 3 * 2);}
+.state_0.sprite_tilesE_3 { background-position: calc(100% / 3 * 3) calc(100% / 3 * 2);}
+.state_0.sprite_tilesE_6 { background-position: calc(100% / 3 * 0) calc(100% / 3 * 3);}
+.state_0.sprite_tilesE_5 { background-position: calc(100% / 3 * 1) calc(100% / 3 * 3);}
+.state_0.sprite_tilesE_8 { background-position: calc(100% / 3 * 2) calc(100% / 3 * 3);}
+.state_0.sprite_tilesE_7, .fleet_basic { background-position: calc(100% / 3 * 3) calc(100% / 3 * 3);}
+
+
+
+.thething .card_planet, .miniboard .card_planet {
+	width: calc(400px * 0.35);
+	height: calc(568px * 0.35);
+	background-size: calc(400px * 9 * 0.35);
+	margin-bottom: 5px; 
+}
+
+.card > .card {/*XXX check other sprites*/
+	width: calc(400px * 0.1);
+	height: calc(568px * 0.1);
+	background-size: calc(400px * 4 * 0.1); 
+}
+
+.card_planet.state_0 > .state_14, .coloniseable > .state_14{
+  display: flex;
+  vertical-align: top;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-top: -15px;
+  margin-left: -10px;
+}
+.resource.state_14 {
+  margin-bottom: -30px;
+}
+.card_planet_1_1 {
+	background-position: 0% 0%; 
+}
+
+.card_planet_1_2 {
+	background-position: calc(100%/ 8 * 1) 0%;
+}
+
+.card_planet_1_3 {
+	background-position: calc(100%/ 8 * 2) 0%;
+}
+
+.card_planet_1_4 {
+	background-position: calc(100%/ 8 * 3) 0%;
+}
+
+.card_planet_1_5 {
+	background-position: calc(100%/ 8 * 4) 0%;
+}
+
+.card_planet_1_6 {
+	background-position: calc(100%/ 8 * 5) 0%;
+}
+
+.card_planet_1_7 {
+	background-position: calc(100%/ 8 * 6) 0%;
+}
+
+.card_planet_1_8 {
+	background-position: calc(100%/ 8 * 7) 0%;
+}
+
+.card_planet_1_9 {
+	background-position: calc(100%/ 8 * 8) 0%;
+}
+
+.card_planet_2_1 {
+	background-position: calc(100%/ 8 * 0) 33.3%;
+}
+
+.card_planet_2_2 {
+	background-position: calc(100%/ 8 * 1) 33.3%;
+}
+
+.card_planet_2_3 {
+	background-position: calc(100%/ 8 * 2) 33.3%;
+}
+
+.card_planet_2_4 {
+	background-position: calc(100%/ 8 * 3) 33.3%;
+}
+
+.card_planet_2_5 {
+	background-position: calc(100%/ 8 * 4) 33.3%;
+}
+
+.card_planet_2_6 {
+	background-position: calc(100%/ 8 * 5) 33.3%;
+}
+
+.card_planet_2_7 {
+	background-position: calc(100%/ 8 * 6) 33.3%;
+}
+
+.card_planet_2_8 {
+	background-position: calc(100%/ 8 * 7) 33.3%;
+}
+
+.card_planet_2_9 {
+	background-position: calc(100%/ 8 * 8) 33.3%;
+}
+
+.card_planet_3_1 {
+	background-position: calc(100%/ 8 * 0) 66.5%;
+}
+
+.card_planet_3_2 {
+	background-position: calc(100%/ 8 * 1) 66.5%;
+}
+
+.card_planet_3_3 {
+	background-position: calc(100%/ 8 * 2) 66.5%;
+}
+
+.card_planet_3_4 {
+	background-position: calc(100%/ 8 * 3) 66.5%;
+}
+
+.card_planet_3_5 {
+	background-position: calc(100%/ 8 * 4) 66.5%;
+}
+
+.card_planet_3_6 {
+	background-position: calc(100%/ 8 * 5) 66.5%;
+}
+
+.card_planet_3_7 {
+	background-position: calc(100%/ 8 * 6) 66.5%;
+}
+
+.card_planet_3_8 {
+	background-position: calc(100%/ 8 * 7) 66.5%;
+}
+
+.card_planet_3_9 {
+	background-position: calc(100%/ 8 * 8) 66.6%;
+}
+
+.supply_tech {
+
+}
+
+.supply_tech .tech, .discard, #discard_planets{
+	cursor: pointer;
+}
+.tech_display {
+	position: relative;
+	width: 100%;
+	transition: all 0.5s ease-in-out;
+}
+.tech_display_row {
+	position: relative;
+}
+
+.inspect_display .card, .selection_area > * {
+	display: inline-block;
+	margin: 5px;
+	margin-right: 0px;
+}
+
+.tech_display > * {
+	display: block;
+}
+.tech_display_row > *{
+	display: block;
+}
+
+.selection_area{
+	margin-top: 10px;
+	border-radius: 10px;
+}
+
+.discard_display,.deck_display {
+	margin-top: 10px;
+	background: rgba(255, 255, 255, 0.2);
+	border-radius: 10px;
+}
+
+.discard_display.expanded,.deck_display.expanded {
+	min-height: 200px;
+}
+
+/* Improved survey */
+.card_tech_1_11 {
+	background-position: calc(99.9%/3 * 2) calc(100%/ 13 * 1);
+}
+.card_tech_1_12 {
+	background-position: calc(99.9%/3 * 2) calc(100%/ 13 * 0);
+}
+
+.card_tech_1_13 {
+	background-position: calc(99.9%/3 * 2) calc(100%/ 13 * 2);
+}
+.card_tech_1_14 {
+	background-position: calc(99.9%/3 * 2) calc(100%/ 13 * 3);
+}
+
+/* Improved colonize */
+.card_tech_1_21 {
+	background-position: calc(99.9%/3 * 0) calc(100%/ 13 * 0);
+}
+.card_tech_1_22 {
+	background-position: calc(99.9%/3 * 0) calc(100%/ 13 * 1);
+}
+.card_tech_1_23 {
+	background-position: calc(99.9%/3 * 2) calc(100%/ 13 * 4);
+}
+.card_tech_1_24 {
+	background-position: calc(99.9%/3 * 2) calc(100%/ 13 * 5);
+}
+
+/* Improved warfare */
+.card_tech_1_31 {
+	background-position: calc(99.9%/3 * 3) calc(100%/ 13 * 0);
+}
+.card_tech_1_32 {
+	background-position: calc(99.9%/3 * 3) calc(100%/ 13 * 1);
+}
+.card_tech_1_33 {
+	background-position: calc(99.9%/3 * 3) calc(100%/ 13 * 2);
+}
+.card_tech_1_34 {
+	background-position: calc(99.9%/3 * 3) calc(100%/ 13 * 3);
+}
+
+
+/* Improved production */
+.card_tech_1_41 {
+	background-position: calc(99.9%/3 * 1) calc(100%/ 13 * 0);
+}
+.card_tech_1_42 {
+	background-position: calc(99.9%/3 * 1) calc(100%/ 13 * 1);
+}
+.card_tech_1_43 {
+	background-position: calc(99.9%/3 * 3) calc(100%/ 13 * 4);
+}
+.card_tech_1_44 {
+	background-position: calc(99.9%/3 * 3) calc(100%/ 13 * 5);
+}
+/* Improved trade */
+.card_tech_1_51 {
+	background-position: calc(99.9%/3 * 1) calc(100%/ 13 * 3);
+}
+.card_tech_1_52 {
+	background-position: calc(99.9%/3 * 1) calc(100%/ 13 * 2);
+}
+.card_tech_1_53 {
+	background-position: calc(99.9%/3 * 1) calc(100%/ 13 * 4);
+}
+.card_tech_1_54 {
+	background-position: calc(99.9%/3 * 1) calc(100%/ 13 * 5);
+}
+
+/* Improved research */
+.card_tech_1_61 {
+	background-position: calc(99.9%/3 * 0) calc(100%/ 13 * 3);
+}
+.card_tech_1_62 {
+	background-position: calc(99.9%/3 * 0) calc(100%/ 13 * 2);
+}
+.card_tech_1_63 {
+	background-position: calc(99.9%/3 * 0) calc(100%/ 13 * 4);
+}
+.card_tech_1_64 {
+	background-position: calc(99.9%/3 * 0) calc(100%/ 13 * 5);
+}
+
+/* Diverse Market */
+.card_tech_2_71 {
+	background-position: calc(99.9%/3 * 1) calc(100%/ 13 * 6);
+}
+/* Data Network */
+.card_tech_2_72 {
+	background-position: calc(99.9%/3 * 0) calc(100%/ 13 * 6);
+}
+/* Specialization */
+.card_tech_2_73 {
+	background-position: calc(99.9%/3 * 2) calc(100%/ 13 * 6);
+}
+/* Weapon Imporium */
+.card_tech_2_74 {
+	background-position: calc(99.9%/3 * 0) calc(100%/ 13 * 7);
+}
+/* Streamlining back of Weapon Imporium */
+.card_tech_2_75 {
+	background-position: calc(99.9%/3 * 1) calc(100%/ 13 * 7);
+}
+
+/* Mobilization */
+.card_tech_2_81 {
+	background-position: calc(99.9%/3 * 1) calc(100%/ 13 * 10);
+}
+/* Survey team  */
+.card_tech_2_82 {
+	background-position: calc(99.9%/3 * 0) calc(100%/ 13 * 10);
+}
+/* War path  */
+.card_tech_2_83 {
+	background-position: calc(99.9%/3 * 2) calc(100%/ 13 * 10);
+}
+
+/* Imperialism */
+.card_tech_2_84 {
+	background-position: calc(99.9%/3 * 0) calc(100%/ 13 * 11);
+}
+/* Scorched - back of Imperialism*/
+.card_tech_2_85 {
+	background-position: calc(99.9%/3 * 1) calc(100%/ 13 * 11);
+}
+
+/* Artificial Intellegence */
+.card_tech_2_91 {
+	background-position: calc(99.9%/3 * 1) calc(100%/ 13 * 8);
+}
+/* Geneti Engineering */
+.card_tech_2_92 {
+	background-position: calc(99.9%/3 * 2) calc(100%/ 13 * 8);
+}
+/* Terraforming */
+.card_tech_2_93 {
+	background-position: calc(99.9%/3 * 0) calc(100%/ 13 * 8);
+}
+
+/* Fertile Grounds */
+.card_tech_2_94 {
+	background-position: calc(99.9%/3 * 0) calc(100%/ 13 * 9);
+}
+/* Abundance - back of Fertile Grounds */
+.card_tech_2_95 {
+	/*background-position: calc(99.9%/3 * 1) calc(100%/ 13 * 9);*/
+	background-position: calc(99.9%/3 * 3) calc(100%/ 13 * 8);
+	
+}
+
+/* Adaptability */
+.card_tech_3_76 {
+	background-position: calc(99.9%/3 * 2) calc(100%/ 13 * 7);
+}
+.card_tech_3_77 {
+	background-position: calc(99.9%/3 * 3) calc(100%/ 13 * 7);
+}
+/* Logistics */
+.card_tech_3_86 {
+	/* background-position: calc(99.9%/3 * 2) calc(100%/ 13 * 11); */
+	background-position: 100% 100%;
+}
+/* Productivity - back of Logistics */
+.card_tech_3_87 {
+	background-position: calc(99.9%/3 * 3) calc(100%/ 13 * 11);
+}
+/* Dissention */
+.card_tech_3_96 {
+	background-position: calc(99.9%/3 * 2) calc(100%/ 13 * 9);
+}
+/* Burocracy - back of Dissention */
+.card_tech_3_97 {
+	/* background-position: calc(99.9%/3 * 3) calc(100%/ 13 * 9); original */
+	background-position: calc(99.9%/3 * 3) calc(100%/ 13 * 10);
+}
+
+@media only screen and (max-width: 600px) {
+	/* Improved survey */
+	.card_tech_1_11 {
+		background-position: calc(99%/3 * 2) calc(100%/ 13 * 1);
+	}
+	.card_tech_1_12 {
+		background-position: calc(99%/3 * 2) calc(100%/ 13 * 0);
+	}
+
+	.card_tech_1_13 {
+		background-position: calc(99%/3 * 2) calc(100%/ 13 * 2);
+	}
+	.card_tech_1_14 {
+		background-position: calc(99%/3 * 2) calc(100%/ 13 * 3);
+	}
+
+	/* Improved colonize */
+	.card_tech_1_21 {
+		background-position: calc(99%/3 * 0) calc(100%/ 13 * 0);
+	}
+	.card_tech_1_22 {
+		background-position: calc(99%/3 * 0) calc(100%/ 13 * 1);
+	}
+	.card_tech_1_23 {
+		background-position: calc(99%/3 * 2) calc(100%/ 13 * 4);
+	}
+	.card_tech_1_24 {
+		background-position: calc(99%/3 * 2) calc(100%/ 13 * 5);
+	}
+
+	/* Improved warfare */
+	.card_tech_1_31 {
+		background-position: calc(99%/3 * 3) calc(100%/ 13 * 0);
+	}
+	.card_tech_1_32 {
+		background-position: calc(99%/3 * 3) calc(100%/ 13 * 1);
+	}
+	.card_tech_1_33 {
+		background-position: calc(99%/3 * 3) calc(100%/ 13 * 2);
+	}
+	.card_tech_1_34 {
+		background-position: calc(99%/3 * 3) calc(100%/ 13 * 3);
+	}
+
+
+	/* Improved production */
+	.card_tech_1_41 {
+		background-position: calc(99%/3 * 1) calc(100%/ 13 * 0);
+	}
+	.card_tech_1_42 {
+		background-position: calc(99%/3 * 1) calc(100%/ 13 * 1);
+	}
+	.card_tech_1_43 {
+		background-position: calc(99%/3 * 3) calc(100%/ 13 * 4);
+	}
+	.card_tech_1_44 {
+		background-position: calc(99%/3 * 3) calc(100%/ 13 * 5);
+	}
+	/* Improved trade */
+	.card_tech_1_51 {
+		background-position: calc(99%/3 * 1) calc(100%/ 13 * 3);
+	}
+	.card_tech_1_52 {
+		background-position: calc(99%/3 * 1) calc(100%/ 13 * 2);
+	}
+	.card_tech_1_53 {
+		background-position: calc(99%/3 * 1) calc(100%/ 13 * 4);
+	}
+	.card_tech_1_54 {
+		background-position: calc(99%/3 * 1) calc(100%/ 13 * 5);
+	}
+
+	/* Improved research */
+	.card_tech_1_61 {
+		background-position: calc(99%/3 * 0) calc(100%/ 13 * 3);
+	}
+	.card_tech_1_62 {
+		background-position: calc(99%/3 * 0) calc(100%/ 13 * 2);
+	}
+	.card_tech_1_63 {
+		background-position: calc(99%/3 * 0) calc(100%/ 13 * 4);
+	}
+	.card_tech_1_64 {
+		background-position: calc(99%/3 * 0) calc(100%/ 13 * 5);
+	}
+
+	/* Diverse Market */
+	.card_tech_2_71 {
+		background-position: calc(99%/3 * 1) calc(100%/ 13 * 6);
+	}
+	/* Data Network */
+	.card_tech_2_72 {
+		background-position: calc(99%/3 * 0) calc(100%/ 13 * 6);
+	}
+	/* Specialization */
+	.card_tech_2_73 {
+		background-position: calc(99%/3 * 2) calc(100%/ 13 * 6);
+	}
+	/* Weapon Imporium */
+	.card_tech_2_74 {
+		background-position: calc(99%/3 * 0) calc(100%/ 13 * 7);
+	}
+	/* Streamlining back of Weapon Imporium */
+	.card_tech_2_75 {
+		background-position: calc(99%/3 * 1) calc(100%/ 13 * 7);
+	}
+
+	/* Mobilization */
+	.card_tech_2_81 {
+		background-position: calc(99%/3 * 1) calc(100%/ 13 * 10);
+	}
+	/* Survey team  */
+	.card_tech_2_82 {
+		background-position: calc(99%/3 * 0) calc(100%/ 13 * 10);
+	}
+	/* War path  */
+	.card_tech_2_83 {
+		background-position: calc(99%/3 * 2) calc(100%/ 13 * 10);
+	}
+
+	/* Imperialism */
+	.card_tech_2_84 {
+		background-position: calc(99%/3 * 0) calc(100%/ 13 * 11);
+	}
+	/* Scorched - back of Imperialism*/
+	.card_tech_2_85 {
+		background-position: calc(99%/3 * 1) calc(100%/ 13 * 11);
+	}
+
+	/* Artificial Intellegence */
+	.card_tech_2_91 {
+		background-position: calc(99%/3 * 1) calc(100%/ 13 * 8);
+	}
+	/* Geneti Engineering */
+	.card_tech_2_92 {
+		background-position: calc(99%/3 * 2) calc(100%/ 13 * 8);
+	}
+	/* Terraforming */
+	.card_tech_2_93 {
+		background-position: calc(99%/3 * 0) calc(100%/ 13 * 8);
+	}
+
+	/* Fertile Grounds */
+	.card_tech_2_94 {
+		background-position: calc(99%/3 * 0) calc(100%/ 13 * 9);
+	}
+	/* Abundance - back of Fertile Grounds */
+	.card_tech_2_95 {
+		/*background-position: calc(99%/3 * 1) calc(100%/ 13 * 9);*/
+		background-position: calc(99%/3 * 3) calc(100%/ 13 * 8);
+		
+	}
+
+	/* Adaptability */
+	.card_tech_3_76 {
+		background-position: calc(99%/3 * 2) calc(100%/ 13 * 7);
+	}
+	.card_tech_3_77 {
+		background-position: calc(99%/3 * 3) calc(100%/ 13 * 7);
+	}
+	/* Logistics */
+	.card_tech_3_86 {
+		/* background-position: calc(99%/3 * 2) calc(100%/ 13 * 11); */
+		background-position: 100% 100%;
+	}
+	/* Productivity - back of Logistics */
+	.card_tech_3_87 {
+		background-position: calc(99%/3 * 3) calc(100%/ 13 * 11);
+	}
+	/* Dissention */
+	.card_tech_3_96 {
+		background-position: calc(99%/3 * 2) calc(100%/ 13 * 9);
+	}
+	/* Burocracy - back of Dissention */
+	.card_tech_3_97 {
+		/* background-position: calc(99%/3 * 3) calc(100%/ 13 * 9); original */
+		background-position: calc(99%/3 * 3) calc(100%/ 13 * 10);
+	}
+}
+
+
+/* cards overlap on tech display */
+
+.tech_display .card_tech_1_11 + .card_tech_1_12,
+.tech_display .card_tech_1_13 + .card_tech_1_14,
+.tech_display .card_tech_1_21 + .card_tech_1_22,
+.tech_display .card_tech_1_23 + .card_tech_1_24,
+.tech_display .card_tech_1_31 + .card_tech_1_32,
+.tech_display .card_tech_1_33 + .card_tech_1_34,
+.tech_display .card_tech_1_41 + .card_tech_1_42,
+.tech_display .card_tech_1_43 + .card_tech_1_44,
+.tech_display .card_tech_1_51 + .card_tech_1_52,
+.tech_display .card_tech_1_53 + .card_tech_1_54,
+.tech_display .card_tech_1_61 + .card_tech_1_62,
+.tech_display .card_tech_1_63 + .card_tech_1_64 {
+	margin-left: -110px;
+}
+
+
+.scenario {
+	background-image: url(img/scenariosAll.jpg);
+	background-size: calc(400px * 6) calc(560px * 6);
+
+}
+
+.thething .scenario {
+	background-size: calc(400px * 6 * 0.35) calc(560px * 6 * 0.35);
+}
+
+.scenario_e_1 { background-position: calc(100% / 5 * 0) calc(100% / 5 * 0);}
+.scenario_e_2 { background-position: calc(100% / 5 * 1) calc(100% / 5 * 0);}
+.scenario_e_3 { background-position: calc(100% / 5 * 2) calc(100% / 5 * 0);}
+.scenario_e_4 { background-position: calc(100% / 5 * 3) calc(100% / 5 * 0);}
+.scenario_e_5 { background-position: calc(100% / 5 * 4) calc(100% / 5 * 0);}
+.scenario_e_6 { background-position: calc(100% / 5 * 5) calc(100% / 5 * 0);}
+.scenario_e_7 { background-position: calc(100% / 5 * 0) calc(100% / 5 * 1);}
+.scenario_e_8 { background-position: calc(100% / 5 * 1) calc(100% / 5 * 1);}
+.scenario_e_9 { background-position: calc(100% / 5 * 2) calc(100% / 5 * 1);}
+.scenario_e_10 { background-position: calc(100% / 5 * 3) calc(100% / 5 * 1);}
+.scenario_e_11 { background-position: calc(100% / 5 * 4) calc(100% / 5 * 1);}
+.scenario_e_12 { background-position: calc(100% / 5 * 5) calc(100% / 5 * 1);}
+.scenario_e_13 { background-position: calc(100% / 5 * 0) calc(100% / 5 * 2);}
+.scenario_e_14 { background-position: calc(100% / 5 * 1) calc(100% / 5 * 2);}
+.scenario_e_15 { background-position: calc(100% / 5 * 2) calc(100% / 5 * 2);}
+.scenario_e_16 { background-position: calc(100% / 5 * 3) calc(100% / 5 * 2);}
+.scenario_e_17 { background-position: calc(100% / 5 * 4) calc(100% / 5 * 2);}
+.scenario_e_18 { background-position: calc(100% / 5 * 5) calc(100% / 5 * 2);}
+.scenario_e_19 { background-position: calc(100% / 5 * 0) calc(100% / 5 * 3);}
+.scenario_e_20 { background-position: calc(100% / 5 * 1) calc(100% / 5 * 3);}
+.scenario_e_21 { background-position: calc(100% / 5 * 2) calc(100% / 5 * 3);}
+.scenario_e_22 { background-position: calc(100% / 5 * 3) calc(100% / 5 * 3);}
+.scenario_e_23 { background-position: calc(100% / 5 * 4) calc(100% / 5 * 3);}
+.scenario_e_24 { background-position: calc(100% / 5 * 5) calc(100% / 5 * 3);}
+.scenario_e_25 { background-position: calc(100% / 5 * 0) calc(100% / 5 * 4);}
+.scenario_e_26 { background-position: calc(100% / 5 * 1) calc(100% / 5 * 4);}
+.scenario_e_27 { background-position: calc(100% / 5 * 2) calc(100% / 5 * 4);}
+.scenario_e_28 { background-position: calc(100% / 5 * 3) calc(100% / 5 * 4);}
+.scenario_e_29 { background-position: calc(100% / 5 * 4) calc(100% / 5 * 4);}
+.scenario_e_30 { background-position: calc(100% / 5 * 5) calc(100% / 5 * 4);}
+.scenario_e_31 { background-position: calc(100% / 5 * 0) calc(100% / 5 * 5);}
+.scenario_e_32 { background-position: calc(100% / 5 * 1) calc(100% / 5 * 5);}
+.scenario_e_33 { background-position: calc(100% / 5 * 2) calc(100% / 5 * 5);}
+.scenario_e_34 { background-position: calc(100% / 5 * 3) calc(100% / 5 * 5);}
+.scenario_e_35 { background-position: calc(100% / 5 * 4) calc(100% / 5 * 5);}
+.scenario_e_36 { background-position: calc(100% / 5 * 5) calc(100% / 5 * 5);}
+
+/* Log */
+.log .token {
+	display: inline-block;
+}
+.logitem {
+	display: inline-block;
+	vertical-align: middle;
+	line-height: 32px;
+}
+
+.logitem.resource {
+    margin-left: -10px;
+    margin-right: -16px;
+    margin-bottom: -16px;
+    margin-top: -10px;
+}
+.tech_E  {
+	background-image: url("img/techE.jpg");
+}
+.tech_E_1 { background-position: calc(100% / 3 * 0) calc(100% / 10 * 0);}
+.tech_E_2 { background-position: calc(100% / 3 * 1) calc(100% / 10 * 0);}
+.tech_E_3 { background-position: calc(100% / 3 * 2) calc(100% / 10 * 0);}
+.tech_E_4 { background-position: calc(100% / 3 * 3) calc(100% / 10 * 0);}
+.tech_E_5 { background-position: calc(100% / 3 * 0) calc(100% / 10 * 1);}
+.tech_E_6 { background-position: calc(100% / 3 * 1) calc(100% / 10 * 1);}
+.tech_E_7 { background-position: calc(100% / 3 * 2) calc(100% / 10 * 1);}
+.tech_E_8 { background-position: calc(100% / 3 * 3) calc(100% / 10 * 1);}
+.tech_E_9 { background-position: calc(100% / 3 * 0) calc(100% / 10 * 2);}
+.tech_E_10 { background-position: calc(100% / 3 * 1) calc(100% / 10 * 2);}
+.tech_E_11 { background-position: calc(100% / 3 * 2) calc(100% / 10 * 2);}
+.tech_E_12 { background-position: calc(100% / 3 * 3) calc(100% / 10 * 2);}
+.tech_E_13 { background-position: calc(100% / 3 * 0) calc(100% / 10 * 3);}
+.tech_E_14 { background-position: calc(100% / 3 * 1) calc(100% / 10 * 3);}
+.tech_E_15 { background-position: calc(100% / 3 * 2) calc(100% / 10 * 3);}
+.tech_E_16 { background-position: calc(100% / 3 * 3) calc(100% / 10 * 3);}
+.tech_E_17 { background-position: calc(100% / 3 * 0) calc(100% / 10 * 4);}
+.tech_E_18 { background-position: calc(100% / 3 * 1) calc(100% / 10 * 4);}
+.tech_E_19 { background-position: calc(100% / 3 * 2) calc(100% / 10 * 4);}
+.tech_E_20 { background-position: calc(100% / 3 * 3) calc(100% / 10 * 4);}
+.tech_E_21 { background-position: calc(100% / 3 * 0) calc(100% / 10 * 5);}
+.tech_E_22 { background-position: calc(100% / 3 * 1) calc(100% / 10 * 5);}
+.tech_E_23 { background-position: calc(100% / 3 * 2) calc(100% / 10 * 5);}
+.tech_E_24 { background-position: calc(100% / 3 * 3) calc(100% / 10 * 5);}
+.tech_E_25 { background-position: calc(100% / 3 * 0) calc(100% / 10 * 6);}
+.tech_E_26 { background-position: calc(100% / 3 * 1) calc(100% / 10 * 6);}
+.tech_E_27 { background-position: calc(100% / 3 * 2) calc(100% / 10 * 6);}
+.tech_E_28 { background-position: calc(100% / 3 * 3) calc(100% / 10 * 6);}
+.tech_E_29 { background-position: calc(100% / 3 * 0) calc(100% / 10 * 7);}
+.tech_E_30 { background-position: calc(100% / 3 * 1) calc(100% / 10 * 7);}
+.tech_E_31 { background-position: calc(100% / 3 * 2) calc(100% / 10 * 7);}
+.tech_E_32 { background-position: calc(100% / 3 * 3) calc(100% / 10 * 7);}
+.tech_E_33 { background-position: calc(100% / 3 * 0) calc(100% / 10 * 8);}
+.tech_E_34 { background-position: calc(100% / 3 * 1) calc(100% / 10 * 8);}
+.tech_E_35 { background-position: calc(100% / 3 * 2) calc(100% / 10 * 8);}
+.tech_E_36 { background-position: calc(100% / 3 * 3) calc(100% / 10 * 8);}
+.tech_E_37 { background-position: calc(100% / 3 * 0) calc(100% / 10 * 9);}
+.tech_E_38 { background-position: calc(100% / 3 * 1) calc(100% / 10 * 9);}
+.tech_E_39 { background-position: calc(100% / 3 * 2) calc(100% / 10 * 9);}
+.tech_E_40 { background-position: calc(100% / 3 * 3) calc(100% / 10 * 9);}
+.tech_E_41 { background-position: calc(100% / 3 * 0) calc(100% / 10 * 10);}
+.tech_E_42 { background-position: calc(100% / 3 * 1) calc(100% / 10 * 10);}
+.tech_E_43 { background-position: calc(100% / 3 * 2) calc(100% / 10 * 10);}
+.tech_E_44 { background-position: calc(100% / 3 * 3) calc(100% / 10 * 10);}
+
+
+.supply_hidden {
+	display: none;
+}
+
+.slider {
+	height: 32px;
+	vertical-align: middle;
+	background: #d3d3d3; /* Grey background */
+	outline: none; /* Remove outline */
+	opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+	transition: opacity .2s;
+}
+
+.slider:hover {
+	opacity: 1;
+}
+.control-title {
+	color: white;
+	text-shadow: 0 1px black, 1px 0 black;
+}
+.control-card > *{
+	display: inline-block;
+	vertical-align: middle;
+}
+#perma_title {
+	background-color: #478ab9;
+	border: 1px white solid;
+}
+
+#selection_area .card {
+  transition: opacity .2s;
+}
+
+#selection_area_controls {
+	display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
+#selection_area_controls > * {
+	display: inline-block;
+	margin-right: 20px;
+	vertical-align: middle;
+}
+.gcheckbox {
+	margin-right: 10px;
+}
+.filter_control_area:not(.expanded) #selection_area_controls {
+	display: none;
+}
+
+/* Pulse scale */
+
+         
+@keyframes pulsescale_anim {
+            0% {transform: scale(1.0);}
+            50% { 
+            transform: scale(1.1);   
+            }
+            100% {transform: scale(1.0);}
+}
+         
+.pulsescale {
+	animation: pulsescale_anim 2s infinite;
+}
+
+@keyframes fadeOut {
+   0% {opacity: 1 !important;}
+   100% {opacity: 0;}
+} 
+         
+.fadeOut {
+	animation: fadeOut 0.5s ease-in-out;
+}
+
+.scorenumber {
+    font-size: 1em;
+    font-weight: bold;
+    color: maroon;
+    text-shadow: 1px 0 1px #fff, 0 -1px 1px #fff, 0 1px 1px #fff, -1px 0 1px #fff;
+    
+    position: absolute;
+	z-index: 100;
+    transition: transform 0.5s ease-in-out;
+}
+
+.tmp_obj {
+	position: absolute;
+	z-index: 100;
+    transition: transform 0.5s ease-in-out;
+}
+
+.traveller {
+    transition: transform 0.5s ease-in-out;
+}
+
+.moving_token {
+	/* display: inline-block !important;*/ 
+}
+
+.scorenumber_anim {
+    transform: translateY(-50px) rotate(-360deg) scale(3);
+    transition: transform 0.5s ease-in-out;
+}
+
+.vapor_anim {
+    transform: translateY(-100px) scale(1.5) ;
+    transition: transform 2s ease-out;
+}

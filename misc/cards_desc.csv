@@ -1,0 +1,46 @@
+NAME|ACTION|"RESEARCH NEEDED"|"PLANET(s) NEEDED"|BOOST SYMBOLS|IP
+Improved Survey|Draw 3 Cards|3|A|ST|0
+Improved Survey|Draw 3 Cards|3|A|SR|0
+Improved Survey|Draw 3 Cards|3|E|SC|0
+Improved Survey|Draw 3 Cards|3|E|SP|0
+Improved Colonize|Settle 1 Planet and Settle another planet OR +1 Colony|3|A|CR|0
+Improved Colonize|Settle 1 Planet and Settle another planet OR +1 Colony|3|A|CT|0
+Improved Colonize|Settle 1 Planet and Settle another planet OR +1 Colony|3|M|CS|0
+Improved Colonize|Settle 1 Planet and Settle another planet OR +1 Colony|3|M|CW|0
+Improved Warfare|Collect 2 Fighters OR Attack 1 Planet|3|A|WR|0
+Improved Warfare|Collect 2 Fighters OR Attack 1 Planet|3|A|WT|0
+Improved Warfare|Collect 2 Fighters OR Attack 1 Planet|3|E|WC|0
+Improved Warfare|Collect 2 Fighters OR Attack 1 Planet|3|E|WP|0
+Improved Production|Produce 2 Resources|3|A|PR|0
+Improved Production|Produce 2 Resources|3|A|PT|0
+Improved Production|Produce 2 Resources|3|M|PS|0
+Improved Production|Produce 2 Resources|3|M|PW|0
+Improved Trade|Collect 1 Influence|3|E|TP|0
+Improved Trade|Collect 1 Influence|3|E|TC|0
+Improved Trade|Collect 1 Influence|3|M|TS|0
+Improved Trade|Collect 1 Influence|3|M|TW|0
+Improved Research|Draw 1 Card.  Remove up to 3 from Hand|3|E|RP|0
+Improved Research|Draw 1 Card.  Remove up to 3 from Hand|3|E|RC|0
+Improved Research|Draw 1 Card.  Remove up to 3 from Hand|3|M|RS|0
+Improved Research|Draw 1 Card.  Remove up to 3 from Hand|3|M|RW|0
+Diverse Markets|+1 Influence for each type of Resource traded|5|AA|RT|2
+Data Network|Draw 2 Cards.  Remove any # of cards in hand|5|AA|RR|2
+Specialization|Choose 1 Resource +1 IP for each one traded |5|AA|TT|2
+Streamlining|Remove 1 card in hand each turn.|5|AA|NONE|2
+Weapon Emporium|Trade fighters as Resources||||2
+Adaptability|Research Role cards gain all symbols|7|AAA|NONE|5
+Hyperefficiency|Remove any # cards from hand each turn.||||5
+Mobilization|Collect 2 Fighters.  Attack 1 planet after Role Phase|5|MM|SW|2
+Survey Team|Take top Planet and place face down|5|MM|SS|2
+War Path|Attack up to 2 Planets|5|MM|WW|2
+Imperialism|NO TEXT|5|MM|STW|2
+Scorched Earth Policy|-2 to Warfare Cost.  After attacking leave a fighter & no resources allowed|||NONE|2
+Logistics|Play Action & Role in any order|7|MMM|NONE|5
+Productivity|Play an additional Action||||5
+Artificial Intelligence|Take any 2 Role cards from the stacks|5|EE|CP|2
+Genetic Engineering|+1 IP for each Type of resource produced.|5|EE|PP|2
+Terraforming|Counts as 2 colonies when added to planet.  If enough can settle planet.|5|EE|CC|2
+Abundance|Settle or attacked planets come into play resourced.|5|EE|NONE|2
+Fertile Ground|NO TEXT|||CPR|2
+Bureaucracy|Use leader role on Colonize & Warfare|7|EEE|NONE|5
+Dissension|Draw an additional card||||5

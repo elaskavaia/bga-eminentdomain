@@ -1,0 +1,47 @@
+id|type|exp|name|b|p|i|v|a|side|flip|e|php|tooltip|rulings
+#||||b- research|p – prereq|I – symbols|v - influence|A - action||flip – id of flip card|e perm action|||
+card_tech_1_11|tech||Improved Survey|3|A|ST|0|ddd|0||||Draw 3 cards.|
+card_tech_1_12|tech||Improved Survey|3|A|SR|0|ddd|0||||Draw 3 cards.|
+card_tech_1_13|tech||Improved Survey|3|E|SC|0|ddd|0||||Draw 3 cards.|
+card_tech_1_14|tech||Improved Survey|3|E|SP|0|ddd|0||||Draw 3 cards.|
+card_tech_1_21|tech||Improved Colonize|3|A|CR|0|Ss|0||||Settle 1 Planet. Settle another planet OR +1 Colony.|
+card_tech_1_22|tech||Improved Colonize|3|A|CT|0|Ss|0||||Settle 1 Planet. Settle another planet OR +1 Colony.|
+card_tech_1_23|tech||Improved Colonize|3|M|CS|0|Ss|0||||Settle 1 Planet. Settle another planet OR +1 Colony.|
+card_tech_1_24|tech||Improved Colonize|3|M|CW|0|Ss|0||||Settle 1 Planet. Settle another planet OR +1 Colony.|
+card_tech_1_31|tech||Improved Warfare|3|A|WR|0|FF/a|0||||Collect 2 Fighters OR Attack 1 Planet.|
+card_tech_1_32|tech||Improved Warfare|3|A|WT|0|FF/a|0||||Collect 2 Fighters OR Attack 1 Planet.|
+card_tech_1_33|tech||Improved Warfare|3|E|WC|0|FF/a|0||||Collect 2 Fighters OR Attack 1 Planet.|
+card_tech_1_34|tech||Improved Warfare|3|E|WP|0|FF/a|0||||Collect 2 Fighters OR Attack 1 Planet.|
+card_tech_1_41|tech||Improved Production|3|A|PR|0|pp|0||||Produce 2 Resources.|
+card_tech_1_42|tech||Improved Production|3|A|PT|0|pp|0||||Produce 2 Resources.|
+card_tech_1_43|tech||Improved Production|3|M|PS|0|pp|0||||Produce 2 Resources.|
+card_tech_1_44|tech||Improved Production|3|M|PW|0|pp|0||||Produce 2 Resources.|
+card_tech_1_51|tech||Improved Trade|3|E|TP|0|i|0||||Collect 1 Influence from the supply.|
+card_tech_1_52|tech||Improved Trade|3|E|TC|0|i|0||||Collect 1 Influence from the supply.|
+card_tech_1_53|tech||Improved Trade|3|M|TS|0|i|0||||Collect 1 Influence from the supply.|
+card_tech_1_54|tech||Improved Trade|3|M|TW|0|i|0||||Collect 1 Influence from the supply.|
+card_tech_1_61|tech||Improved Research|3|E|RP|0|d.eee!|0||||Draw 1 Card. Remove up to 3 cards in hand from the game.|
+card_tech_1_62|tech||Improved Research|3|E|RC|0|d.eee!|0||||Draw 1 Card. Remove up to 3 cards in hand from the game.|
+card_tech_1_63|tech||Improved Research|3|M|RS|0|d.eee!|0||||Draw 1 Card. Remove up to 3 cards in hand from the game.|
+card_tech_1_64|tech||Improved Research|3|M|RW|0|d.eee!|0||||Draw 1 Card. Remove up to 3 cards in hand from the game.|
+card_tech_2_71|tech||Diverse Markets|5|AA|RT|2|?|0|||'eot'=>'div_r','lasting'=>true|+1 Influence for each TYPE of Resource you trade this turn.|
+card_tech_2_72|tech||Data Network|5|AA|RR|2|dd.E|0||||Draw 2 Cards. Remove any number of cards in hand from the game.|
+card_tech_2_73|tech||Specialization|5|AA|TT|2|y|0|||'eot'=>'max_r','lasting'=>true|Choose 1 Resource TYPE.<br> +1 Influence for each resource of that TYPE you trade this turn.|
+card_tech_2_74|tech||Weapon Emporium|5|AA||2||1|card_tech_2_75|||You may trade Fighters as if they were Resources.|
+card_tech_2_75|tech||Streamlining|5|AA||2||2|card_tech_2_74|e||You may remove 1 card in hand from the game each turn.|
+card_tech_3_76|tech||Adaptability|7|AAA||5||1|card_tech_3_77|||Your standard Research Role cards gain all symbols. They can be used to boost or follow any role.|
+card_tech_3_77|tech||Hyperefficiency|7|AAA||5||2|card_tech_3_76|E||You may remove any number of cards from hand each turn.|
+card_tech_2_81|tech||Mobilization|5|MM|SW|2|FF|0||a|'trig'=>'l-.:a/x','lasting'=>1|Collect 2 Fighters. You may Attack 1 Planet after your Role Phase this turn.|
+card_tech_2_82|tech||Survey Team|5|MM|SS|2|u|0||||Take top Planet of the planet deck and put it into your Empire face down.|
+card_tech_2_83|tech||War Path|5|MM|WW|2|aa|0||||Attack up to 2 Planets.|
+card_tech_2_84|tech||Imperialism|5|MM|STW|2||1|card_tech_2_85||||
+card_tech_2_85|tech||Scorched Earth Policy|5|MM||2||2|card_tech_2_84|||-2 to your Warfare costs. When you Attack a Planet leave a Fighter on it. That Planet cannot store resources.|
+card_tech_3_86|tech||Logistics|7|MMM||5||1|card_tech_3_87|||Play the Action and Role phases of your turn in any order. At the end of the game, take an additional turn.|This rule is from Escalation errata.
+card_tech_3_87|tech||Productivity|7|MMM||5||2|card_tech_3_86|||You may play an additional card for its Action effect during your Action phase.|
+card_tech_2_91|tech||Artificial Intelligence|5|EE|CP|2|ll|0||||Take any 2 Role cards from the stacks into your hand.|
+card_tech_2_92|tech||Genetic Engineering|5|EE|PP|2|?|0|||'eot'=>'div_r','lasting'=>true|+1 Influence for each TYPE of Resource your produce this turn.|
+card_tech_2_93|tech||Terraforming|5|EE|CC|2|c|0||||Add this card to a Planet as 2 Colonies. If this fulfills Colonized cost, Settle the planet.|Terraforming can be used in conjunction with Colonize symbols on Planets and permanent Technology cards in your Empire. This rule is from Escalation Errata.
+card_tech_2_94|tech||Fertile Ground|5|EE|CPR|2||1|card_tech_2_95||||
+card_tech_2_95|tech||Abundance|5|EE||2||2|card_tech_2_94||'trig'=>['enter:pppp','settle:pp','attack:pp']|Produce 4 Resources. When you Settle or Attack a Planet produce 2 Resources.|This rule is from Escalation errata.
+card_tech_3_96|tech||Dissension|7|EEE||5||1|card_tech_3_97|||Draw 1 additional card when Dissenting.|
+card_tech_3_97|tech||Bureaucracy|7|EEE||5||2|card_tech_3_96|||When following a role +<div class='icon survey'></div><div class='icon warfare'></div><div class='icon produce'></div><div class='icon trade'></div><div class='icon research'></div>.<p> You may use Leader Bonus when Following the Colonize and Warfare roles.|This rule is from Escalation errata.

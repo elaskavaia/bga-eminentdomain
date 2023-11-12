@@ -1,0 +1,26 @@
+id|-cat|name|expR|type|sp|t|w|c|i|slots|rslots|a|v|php|tooltip
+#|#Category|Name||||Type|Warfare Cost|Colonize Cost||Resource1|||Influence||Game Text
+card_planet_ES_1|Start|Chaconos|E|planet start_planet sprite_tilesE_{sp} sprite_tilesE|1|P|2|2|T|n|||2||[Start Planet Tile]
+card_planet_ES_2|Start|Janus|E|planet start_planet sprite_tilesE_{sp} sprite_tilesE|2|P|2|2|P|n|||2||[Start Planet Tile]
+card_planet_ES_3|Start|Wiesbaden|E|planet start_planet sprite_tilesE_{sp} sprite_tilesE|5|P|2|2|S|n|||2||[Start Planet Tile]
+card_planet_ES_4|Start|Bardolph|E|planet start_planet sprite_tilesE_{sp} sprite_tilesE|6|A|5|5|TR||||2||[Start Planet Tile]
+card_planet_ES_5|Start|Angel Aniv Ek-625|E|planet start_planet sprite_tilesE_{sp} sprite_tilesE|4|E|5|5|PC||||2||[Start Planet Tile]
+card_planet_ES_6|Start|Kaeth|E|planet start_planet sprite_tilesE_{sp} sprite_tilesE|3|M|5|5|SW||||2||[Start Planet Tile]
+card_planet_E_1|Bustling|Ny'Seia|E|planet sprite_planetsE_{sp} sprite_planetsE|1|A|D|4||||ee|4||Remove up to 2 cards in hand from the game
+card_planet_E_2|Bustling|Otto Erdesz|E|planet sprite_planetsE_{sp} sprite_planetsE|3|A|D|4||s||tt|3||Trade 2 Resources for 1 Influence each
+card_planet_E_3|Bustling|Terra Prime|E|planet sprite_planetsE_{sp} sprite_planetsE|5|E|D|4||||S|4||Settle 1 Planet
+card_planet_E_4|Bustling|Vierra |E|planet sprite_planetsE_{sp} sprite_planetsE|7|E|D|4||fw||pp|2||Produce 2 Resources
+card_planet_E_5|Bustling|Nalarad|E|planet sprite_planetsE_{sp} sprite_planetsE|9|M|D|4||||a|4||Attack 1 Planet
+card_planet_E_6|Bustling|Monos|E|planet sprite_planetsE_{sp} sprite_planetsE|11|M|D|4||i||dd|3||Draw 2 Cards
+card_planet_E_7|Civilized|Nakagawa Kozi|E|planet sprite_planetsE_{sp} sprite_planetsE|13|A|B|4|||||4|'trig'=>'peace'|Collect 1 Influence when Dissenting a Warfare Role. 
+card_planet_E_8|Civilized|Kaylexa|E|planet sprite_planetsE_{sp} sprite_planetsE|15|A|B|4||s|||3|'trig'=>'peace'|Collect 1 Influence when Dissenting a Warfare Role. 
+card_planet_E_9|Civilized|Gregor Duffy|E|planet sprite_planetsE_{sp} sprite_planetsE|17|E|B|4||f|||3|'trig'=>'peace'|Collect 1 Influence when Dissenting a Warfare Role. 
+card_planet_E_10|Civilized|Orracle|E|planet sprite_planetsE_{sp} sprite_planetsE|19|E|B|4||w|||3|'trig'=>'peace'|Collect 1 Influence when Dissenting a Warfare Role. 
+card_planet_E_11|Civilized|Matusiak|E|planet sprite_planetsE_{sp} sprite_planetsE|21|M|B|4|||||4|'trig'=>'peace'|Collect 1 Influence when Dissenting a Warfare Role. 
+card_planet_E_12|Civilized|Yago|E|planet sprite_planetsE_{sp} sprite_planetsE|23|M|B|4|||||4|'trig'=>'peace'|Collect 1 Influence when Dissenting a Warfare Role. 
+card_planet_E_13|Hostile|Pappathan Prime|E|planet sprite_planetsE_{sp} sprite_planetsE|25|A|D|99||s|F||3||[Replenishing Fighter Slot]
+card_planet_E_14|Hostile|Odonata|E|planet sprite_planetsE_{sp} sprite_planetsE|27|E|D|99||fw|F||2||[Replenishing Fighter Slot]
+card_planet_E_15|Hostile|Pitt of Injustice|E|planet sprite_planetsE_{sp} sprite_planetsE|29|M|D|99|||F||4||[Replenishing Fighter Slot]
+card_planet_EP_1|Promo Start|Magrathea|E|planet |1|P|2|2|||||4||[Start Planet Tile]
+card_planet_EP_2|Promo|Dionysus|E|planet |2|U|6|5||n|||2|'h'=>1|Hand Size +1
+card_planet_EP_3|Promo|Hades|E|planet |3|U|6|5||n|F||2||[Replenishing Fighter Slot]

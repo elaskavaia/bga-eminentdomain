@@ -1,0 +1,87 @@
+element_id|element_type|element_name|element_description|tooltip_action
+deck|deck {'loc'=>2,'content'=>1,'counter'=>1 }|Deck|Player's Card Deck|Click to inspect
+discard|discard {'loc'=>2,'content'=>1,'counter'=>1 }|Discard|Player's Discard Pile|Click to inspect
+setaside|zone|Set Aside Zone|
+preferences|preferences {'loc'=>2,'content'=>0,'counter'=>0,'showname'=>false}|User Preferences
+hand|hand {'loc'=>2,'content'=>2,'counter'=>1,'showname'=>false }|Hand||
+handwrapper|handwrapper|Hand Size|Player's Current Hand Size|
+tableau|tableau {'loc'=>2,'content'=>1,'counter'=>0,'showname'=>false }|Empire||
+discard_planets|discard_planets {'loc'=>1,'content'=>1,'counter'=>1 }|Planets Discard|Planets Discard Pile|Click to inspect
+supply_planets|supply_planets {'loc'=>1,'content'=>0,'counter'=>1 }|Planets Deck|Planets Supply Deck|Cannot inspect
+fighter_F|fighter {'p'=>'F'}|Fighter|
+fighter_j1|fighter fighter_F {'p'=>'F'}|Fighter|
+fighter_D|fighter {'p'=>'D'}|Destroyer|
+fighter_B|fighter {'p'=>'B', 'hid'=>'BATTLECRUISER'}|Battlecruiser|You may only have 1 [Battlecruiser] in play at a time. While in play, it is worth 2 and grants you a 1 discount (2 with Improved Fleet) on all Warfare costs.
+card_fleet_b|card fleet fleet_basic tech  sprite_tilesE actionable {'hid'=>'BASIC_FLEET', 'b'=>3, 'bm'=>'3F', 't'=>'M', 'a'=>'FFF>D/DD>B', 'side'=>1}|Basic Fleet|Discard 3 [Fighter] to gain a [Destroyer] (x1) OR Discard 2 [Destroyer] to gain a [Battlecruiser] (x1). <p><p>You may only have 1 [Battlecruiser] in play at a time. While in play, it is worth 2 VP and grants you 1 [Fighter] discount (with Basic Fleet) on all Warfare costs. <p>When leading or following a Research role, you may upgrade Basic Fleet to Improved Fleet by paying 3 [Research] or 3 [Fighter].
+card_fleet_i|card fleet fleet_advanced tech sprite_tilesE actionable {'hid'=>'IMPROVED_FLEET', 'p'=>'','a'=>'FF>D+/DD>B','b'=>3, 'bm'=>'3F', 'flip'=>'card_fleet_b', 'side'=>2}|Improved Fleet|For every 2 [Fighter] you discard in this action, gain 1 [Destroyer] OR Discard 2 [Destroyer] to gain a [Battlecruiser] (x1). <p>You may spend 1 [Battlecruiser] when attacking any Planet instead of the printed Warfare cost. <p>You may only have 1 [Battlecruiser] in play at a time. While in play, it is worth 2 VP and grants you 2 [Fighter] discount (with Improved Fleet) on all Warfare costs.
+stock|stock {'loc'=>1,'content'=>1,'counter'=>1 }|General Supply|
+vp|vp|Influence|
+tableau_fighter|fighter_counter|Fighter Counter|Shows how many fighters you have
+tableau_vp|vp_counter|Influence Counter|Shows how many Influence tokens you have
+resource_w|resource_w {'p'=>'w'}|Water|
+resource_f|resource_f {'p'=>'f'}|Food|
+resource_i|resource_i {'p'=>'i'}|Iron|
+resource_s|resource_s {'p'=>'s'}|Silicon|
+iconperm_C|icon C|Settle Permanents|When settling subtract number of visible settle symbols from planet requirement
+iconperm_W|icon W|Warfare Permanents|When collecting fighters add number of visible warfare symbols to total count
+iconperm_S|icon S|Survey Permanents|When surveying planets add number of visible survey symbols to total count
+iconperm_P|icon P|Produce Permanents|When producing resources add number of visible produce symbols to total count
+iconperm_T|icon T|Trade Permanents|When trading resources add number of visible trade symbols to total count
+iconperm_R|icon R|Research Permanents|When researching technology add number of visible research symbols to total count
+supply_survey|supply {'loc'=>1,'content'=>1,'counter'=>1 }|Survey Roles Deck|
+supply_warfare|supply {'loc'=>1,'content'=>1,'counter'=>1 }|Warfare Roles Deck|
+supply_colonize|supply {'loc'=>1,'content'=>1,'counter'=>1 }|Colonize Roles Deck|
+supply_produce|supply {'loc'=>1,'content'=>1,'counter'=>1 }|Produce Roles Deck|
+supply_research|supply {'loc'=>1,'content'=>1,'counter'=>1 }|Research Roles Deck|
+supply_tech_A|supply {'loc'=>1,'content'=>1,'counter'=>1 }|Advanced Technologies|Play Research Role to select any Technology you can afford.|Click to expand/collapse
+supply_tech_E|supply {'loc'=>1,'content'=>1,'counter'=>1 }|Fertile Technologies|Play Research Role to select any Technology you can afford.|Click to expand/collapse
+supply_tech_M|supply {'loc'=>1,'content'=>1,'counter'=>1 }|Metallic Technologies|Play Research Role to select any Technology you can afford.|Click to expand/collapse
+supply_survey_counter|supply_counter|Supply Card Counter|This number indicates how many cards left in the deck.
+supply_warfare_counter|supply_counter|Supply Card Counter|This number indicates how many cards left in the deck.
+supply_colonize_counter|supply_counter|Supply Card Counter|This number indicates how many cards left in the deck.
+supply_produce_counter|supply_counter|Supply Card Counter|This number indicates how many cards left in the deck.
+supply_research_counter|supply_counter|Supply Card Counter|This number indicates how many cards left in the deck.
+card_role_warfare|card_role {'b'=>0,'p'=>'','i'=>'W','v'=>0,'a'=>'a/F','r'=>'W', 'l'=>'a'}|Warfare|ACTION: Attack 1 Planet OR Collect 1 Fighter<br/><br/>ROLE: Collect 1 Fighter per <div class='icon warfare'></div><br/><span class='yellow'>Leader:</span> May attack 1 Planet instead|
+card_role_survey|card_role {'b'=>0,'p'=>'','i'=>'S','v'=>0,'a'=>'dd','r'=>'S', 'l'=>'v'}|Survey|ACTION: Draw 2 Cards<br/><br/>ROLE: Look at <div class='icon survey'></div> - 1 planet cards, keep 1<br/> <span class='yellow'>Leader:</span> Look at 1 additional card|
+card_role_colonize|card_role {'b'=>0,'p'=>'','i'=>'C','v'=>0,'a'=>'s','r'=>'C','l'=>'s'}|Colonize|ACTION: Settle 1 Planet OR +1 Colony<br/><br/>ROLE: +1 Colony per <div class='icon colonize'></div><br/><span class='yellow'>Leader:</span> May settle 1 Planet instead|
+card_role_produce|card_role {'b'=>0,'p'=>'','i'=>'PT','v'=>0,'a'=>'p/t','r'=>'P/T','l'=>''}|Produce/Trade|<h2>Produce</h2><div>ACTION: Produce 1 resource<br/><br/>ROLE: Produce 1 resource per <div class='icon produce'></div></div><h2>Trade</h2><div>ACTION: Trade 1 resource for <div class='icon vp'></div><br/><br/>ROLE: Trade 1 resource per <div class='icon trade'></div> for 1 <div class='icon vp'></div> each</div>|
+card_role_research|card_role {'b'=>0,'p'=>'','i'=>'R','v'=>0,'a'=>'ee!','r'=>'R','l'=>''}|Research|ACTION: Remove up to 2 cards in hand from the game<br/><br/>ROLE: Acquire 1 technology card after satisfying <div class='icon research'></div> cost and planet requirements|
+card_role_politics|card_role {'b'=>0,'p'=>'','i'=>'','v'=>0,'a'=>'l'}|Politics|ACTION: Remove this card from the game. Take 1 Role card from the stocks into your hand.|
+x_warfare_bottom|card_role {'b'=>0,'p'=>'','i'=>'W','v'=>0,'a'=>'a/F','r'=>'W', 'l'=>'a'}|Warfare|ROLE: +<div class='icon warfare'></div>. Collect 1 Fighter per <div class='icon warfare'></div><br/><span class='yellow'>Leader:</span> May attack 1 Planet instead|
+x_survey_bottom|card_role {'b'=>0,'p'=>'','i'=>'S','v'=>0,'a'=>'dd','r'=>'S', 'l'=>'v'}|Survey|ACTION: Draw 2 Cards<br/><br/>ROLE: Look at <div class='icon survey'></div> - 1 planet cards, keep 1<br/> <span class='yellow'>Leader:</span> Look at 1 additional card|
+x_colonize_bottom|card_role {'b'=>0,'p'=>'','i'=>'C','v'=>0,'a'=>'s','r'=>'C','l'=>'s'}|Colonize|ACTION: Settle 1 Planet OR +1 Colony<br/><br/>ROLE: +1 Colony per <div class='icon colonize'></div><br/><span class='yellow'>Leader:</span> May settle 1 Planet instead|
+x_produce_bottom|card_role {'b'=>0,'p'=>'','i'=>'PT','v'=>0,'a'=>'p/t','r'=>'P/T','l'=>''}|Produce/Trade|<h2>Produce</h2><div>ACTION: Produce 1 resource<br/><br/>ROLE: Produce 1 resource per <div class='icon produce'></div></div><h2>Trade</h2><div>ACTION: Trade 1 resource for influence<br/><br/>ROLE: Trade 1 resource per <div class='icon trade'></div> for 1 influence each</div>|
+x_research_bottom|card_role {'b'=>0,'p'=>'','i'=>'R','v'=>0,'a'=>'ee!','r'=>'R','l'=>''}|Research|ROLE: Acquire 1 technology card after satisfying <div class='icon research'></div> cost and planet requirements|
+card_planet_1_1|planet card_planet  {'t'=>'A','i'=>'R', 'slots'=>'s', 'v'=>3,'w'=>5,'c'=>4}|Lyttle|
+card_planet_1_2|planet card_planet  {'t'=>'A','i'=>'R', 'slots'=>'s', 'v'=>3,'w'=>4,'c'=>5}|Echo Rose|
+card_planet_1_3|planet card_planet  {'t'=>'A','i'=>'R', 'slots'=>'', 'v'=>4,'w'=>6,'c'=>3}|Srod Avain N2|
+card_planet_1_4|planet card_planet  {'t'=>'A','i'=>'T', 'slots'=>'s', 'v'=>3,'w'=>5,'c'=>4}|Ral Gai'Gaw|
+card_planet_1_5|planet card_planet  {'t'=>'A','i'=>'T', 'slots'=>'s', 'v'=>3,'w'=>4,'c'=>5}|Hanoj - T|
+card_planet_1_6|planet card_planet  {'t'=>'A','i'=>'T', 'slots'=>'', 'v'=>4,'w'=>6,'c'=>3}|Zhephan|
+card_planet_1_7|planet card_planet  {'t'=>'A','i'=>'', 'slots'=>'s', 'v'=>2,'h'=>1,'w'=>5,'c'=>4}|Oknow|
+card_planet_1_8|planet card_planet  {'t'=>'A','i'=>'', 'slots'=>'s', 'v'=>2,'h'=>1,'w'=>4,'c'=>5}|Sima-07C|
+card_planet_1_9|planet card_planet  {'t'=>'A','i'=>'', 'slots'=>'s', 'v'=>4,'w'=>6,'c'=>3}|Sholmican|
+card_planet_2_1|planet card_planet  {'t'=>'E','i'=>'C', 'slots'=>'w', 'v'=>3,'w'=>5,'c'=>4}|Styku|
+card_planet_2_2|planet card_planet  {'t'=>'E','i'=>'C', 'slots'=>'f', 'v'=>3,'w'=>4,'c'=>5}|Mik-Mik|
+card_planet_2_3|planet card_planet  {'t'=>'E','i'=>'C', 'slots'=>'fw', 'v'=>2,'w'=>6,'c'=>3}|New Texas|
+card_planet_2_4|planet card_planet  {'t'=>'E','i'=>'P', 'slots'=>'w', 'v'=>3,'w'=>5,'c'=>4}|Gerdland|
+card_planet_2_5|planet card_planet  {'t'=>'E','i'=>'P', 'slots'=>'f', 'v'=>3,'w'=>4,'c'=>5}|Mishburr ITO-A|
+card_planet_2_6|planet card_planet  {'t'=>'E','i'=>'P', 'slots'=>'fw', 'v'=>2,'w'=>6,'c'=>3}|Artigas GNS-111|
+card_planet_2_7|planet card_planet  {'t'=>'E','i'=>'', 'slots'=>'w', 'v'=>2,'h'=>1,'w'=>5,'c'=>4}|Spielbany VI|
+card_planet_2_8|planet card_planet  {'t'=>'E','i'=>'', 'slots'=>'f', 'v'=>2,'h'=>1,'w'=>4,'c'=>5}|Nelos IV|
+card_planet_2_9|planet card_planet  {'t'=>'E','i'=>'', 'slots'=>'fw', 'v'=>3,'w'=>6,'c'=>3}|Angus Daffy|
+card_planet_3_1|planet card_planet  {'t'=>'M','i'=>'S', 'slots'=>'i', 'v'=>3,'w'=>5,'c'=>4}|Voson|
+card_planet_3_2|planet card_planet  {'t'=>'M','i'=>'S', 'slots'=>'i', 'v'=>3,'w'=>4,'c'=>5}|Pink Sonar|
+card_planet_3_3|planet card_planet  {'t'=>'M','i'=>'S', 'slots'=>'', 'v'=>4,'w'=>6,'c'=>3}|Kyrie & Juno|
+card_planet_3_4|planet card_planet  {'t'=>'M','i'=>'W', 'slots'=>'i', 'v'=>3,'w'=>5,'c'=>4}|Tankahshin|
+card_planet_3_5|planet card_planet  {'t'=>'M','i'=>'W', 'slots'=>'i', 'v'=>3,'w'=>4,'c'=>5}|Erkam-W|
+card_planet_3_6|planet card_planet  {'t'=>'M','i'=>'W', 'slots'=>'', 'v'=>4,'w'=>6,'c'=>3}|Overlord Betzel's Domain|
+card_planet_3_7|planet card_planet  {'t'=>'M','i'=>'', 'slots'=>'', 'v'=>3,'h'=>1,'w'=>5,'c'=>4}|Marghannah Prime|
+card_planet_3_8|planet card_planet  {'t'=>'M','i'=>'', 'slots'=>'i', 'v'=>2,'h'=>1,'w'=>4,'c'=>5}|8910 Spielen|
+card_planet_3_9|planet card_planet  {'t'=>'M','i'=>'', 'slots'=>'', 'v'=>5,'w'=>6,'c'=>3}|Idroyos|
+card_planet_0_1|planet card_planet  {'t'=>'A','i'=>'', 'slots'=>'s', 'v'=>2,'w'=>2,'c'=>2}|Pomerene|
+card_planet_0_2|planet card_planet  {'t'=>'E','i'=>'', 'slots'=>'f', 'v'=>2,'w'=>2,'c'=>2}|Drawde|
+card_planet_0_3|planet card_planet  {'t'=>'M','i'=>'', 'slots'=>'i', 'v'=>2,'w'=>2,'c'=>2}|Piedra Seca|
+card_planet_0_4|planet card_planet  {'t'=>'E','i'=>'', 'slots'=>'w', 'v'=>2,'w'=>2,'c'=>2}|Mesia Sednim|
+card_planet_0_5|planet card_planet  {'t'=>'M','i'=>'', 'slots'=>'i', 'v'=>2,'w'=>2,'c'=>2}|Chrispen|
+card_planet_0_6|planet card_planet  {'t'=>'A','i'=>'', 'slots'=>'s', 'v'=>2,'w'=>2,'c'=>2}|Liagiba|

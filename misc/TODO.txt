@@ -1,0 +1,64 @@
+- empire and tech titles not translated
+- 3d issues
+- issues with improve colonize
+- need icon on discard location when expanded
+
+
+
+Sedj
+#10579: "PRODUCTION BUG" - Allow to select resource slot for production for multi-select
+#10583: "GENETIC ENGINEERING BUG" - with abundance in play
+#10593: "PRODUCTIVITY + IMPROVED RESEARCH"
+#10720: "PRODUCTIVITY DIDN'T WORK" + Data Network
+#10605: "USING WAR PATH TO ATTACK ONLY 1 PLANET"
+
+
+
+Een
+- NAH maybe use rounded corners for the central cards display (everything else is rounded)? Or maybe some gray blur to unsharpen the edges like in the rulebook (components page)?
+- when the discard is expanded, to have the same iconography/interface than the hand you could have the cards centered and the discard icon visible on the bottom left of the zone
+- NAH about role selection, currently when choosing a role through the status bar, we don't see the number of remaining roles (so inexperienced players like me can forget to scroll to stay aware of the end of game condition) and we can miss that that the role card has been added to our deck (I didn't see it in my first game). Maybe bring the central card display to the top when it's time to select a role to make it easier? (that would also allow to get easy access to the tooltips)
+- Since you need to keep all the fighters in the player panel, you can hide the counter for fighters, it's redundant information
+- If there is enough production to produce on all worlds, it would be nice if it happened automagically (but maybe there is a reason not to do it because of tech cards, I don't know them so well yet)
+
+
+
+ESCALATION
+* Missing promo cards
+* Missing vicory cards
+https://boardgamegeek.com/thread/1195615/apparently-infrequently-asked-questions
+
+debug
+dbSetTokenLocation(card_tech_2_84,tableau_ff0000,1) // imperialism perm
+dbSetTokenLocation(card_role_survey_3,hand_0000ff,1)
+dbSetTokenLocation(card_role_produce_9,hand_ff0000,1)     
+dbSetTokenLocation(card_role_colonize_8,dev_null,0)
+
+dbSetTokenLocation(card_tech_2_74,tableau_008000,1)// weapon emporium       
+dbSetTokenLocation(card_tech_2_71,tableau_008000,1)//diverse markets
+dbSetTokenLocation(resource_s_1,card_planet_1_4,2)       
+
+
+saction_BuyTech(card_tech_2_82,ff0000) // survey team
+saction_BuyTech(card_tech_2_95,ff0000) // abandance
+
+card_tech_2_83
+dbSetTokenLocation(card_tech_2_73,hand_008000,1)
+
+
+
+ESCALATION IMPLEMENTATION NOTES
+
+* Role triggered effect will go on stack after role is picked before its executed, but it wont be resolved until role is complete
+* After role of active player complete triggered effect start resolving from the stack, top to bottom
+** I.e. we have Scientific method in play and buy Abundance, first will will resolve effect of Abundance (to produce 4 resources), then buy 2nd card (not the other way around) 
+* Player has to select Boost card before any of role abilities resolved, that include additional boost for Scientific Method. 
+   All boost even if not used will remain out of hand in setaside area (that is different from original implementation - where we only discarded USED boost cards).
+* Scientific Discorvery: permanent card goes to play not to hand as rule on card suggest (unless you cannot buy permanents with this?)
+* Scorched earth does not add fighter on planet to block production if attack carried out with Military campaign (as it does not provide discount either)
+* Industrial espionage will not "untrigger" end of game if it triggered because of end of regular influence tokens
+
+
+BUG
+- cannot select fighter on restock slot for trade with weapon emporium
+
