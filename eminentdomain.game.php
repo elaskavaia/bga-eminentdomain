@@ -1241,6 +1241,13 @@ class EminentDomain extends EuroGame {
                     return; // cannot go pre-discard yet
                 }
             }
+
+            $leader = $this->getGameStateValue('leader');
+            if ($leader != $this->getActivePlayerId()){ // Follow masquerading as Turn e.g. Survey
+                $this->gamestate->nextState('next');
+                return;
+            }
+            
             if ($this->getUntrivialDiscardOrActivate($color) && !$discardPlayed && $rolePlayed >= $roleAllowerd) {
                 $this->gamestate->nextState('discard'); // pre-discard
                 return;
