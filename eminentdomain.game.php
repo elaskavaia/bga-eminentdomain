@@ -1243,7 +1243,7 @@ class EminentDomain extends EuroGame {
             }
 
             $leader = $this->getGameStateValue('leader');
-            if ($leader != $this->getActivePlayerId()){ // Follow masquerading as Turn e.g. Survey
+            if ($leader != $player_id){ // Follow masquerading as Turn e.g. Survey
                 $this->gamestate->nextState('next');
                 return;
             }
