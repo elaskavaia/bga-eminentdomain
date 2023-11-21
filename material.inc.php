@@ -2080,7 +2080,7 @@ $this->token_types = array(
   't' => 'A',
   'w' => 'D',
   'c' => 4,
-  'a' => 'ee',
+  'a' => 'ee!',
   'v' => 4,
   'tooltip' => clienttranslate("Remove up to 2 cards in hand from the game"),
 ],
