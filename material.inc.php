@@ -800,7 +800,7 @@ $this->token_types = array(
   'v' => 2,
   'side' => 2,
   'flip' => 'card_tech_2_74',
-  'e' => 'e',
+  'e' => 'e!',
   'tooltip' => clienttranslate("You may remove 1 card in hand from the game each turn."),
 ],
 'card_tech_3_76' => [
