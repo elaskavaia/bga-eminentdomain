@@ -11,7 +11,7 @@
  * 
  * eminentdomain.action.php
  *
- * EminentDomainXmakina main action entry point
+ * EminentDomain main action entry point
  *
  *
  * In this file, you are describing all the methods that can be called from your

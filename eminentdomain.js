@@ -1,5 +1,5 @@
 /**
- * ------ BGA framework: © Gregory Isabelli <gisabelli@boardgamearena.com> & Emmanuel Colin <ecolin@boardgamearena.com> EminentDomainXmakina
+ * ------ BGA framework: © Gregory Isabelli <gisabelli@boardgamearena.com> & Emmanuel Colin <ecolin@boardgamearena.com> EminentDomain
  * implementation : © Alena Laskavaia <laskava@gmail.com>
  * 
  * This code has been produced on the BGA studio platform for use on http://boardgamearena.com. See
@@ -7,7 +7,7 @@
  * 
  * eminentdomain.js
  * 
- * EminentDomainXmakina user interface script
+ * EminentDomain user interface script
  * 
  * In this file, you are describing the logic of your user interface, in Javascript language.
  * 
