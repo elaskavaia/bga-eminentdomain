@@ -1227,7 +1227,7 @@ define(["dojo", "dojo/_base/declare", "ebg/core/gamegui"], function(dojo, declar
 			return this.gamedatas.tokens[token];
 		},
 		notif_tokenMoved: function(notif) {
-			//	console.log('notif_tokenMoved', notif);
+			console.log('notif_tokenMoved', notif);
 			if (typeof notif.args.list != 'undefined') {
 				// move bunch of tokens
 				for (var i = 0; i < notif.args.list.length; i++) {

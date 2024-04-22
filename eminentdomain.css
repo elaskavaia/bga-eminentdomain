@@ -1,7 +1,7 @@
 /**
  *------
  * BGA framework: Ã‚Â© Gregory Isabelli <gisabelli@boardgamearena.com> & Emmanuel Colin <ecolin@boardgamearena.com>
- * EminentDomain implementation : Ã‚Â© Alena Laskavaia <laskava@gmail.com>
+ * eminentdomain implementation : Ã‚Â© Alena Laskavaia <laskava@gmail.com>
  *
  * This code has been produced on the BGA studio platform for use on http://boardgamearena.com.
  * See http://en.boardgamearena.com/#!doc/Studio for more information.
@@ -9,7 +9,7 @@
  *
  * eminentdomain.css
  *
- * EminentDomain stylesheet
+ * EminentDomainXmakina stylesheet
  *
  */
 
@@ -440,6 +440,9 @@ html {
 }
 .slot_board_r, .slot_board_5 {
 	left: 846px;
+}
+.slot_board_6 {
+	left: 1012px;
 }
 
 .slot_board > * {
@@ -1876,7 +1879,6 @@ color: #773300;
 .scenario {
 	background-image: url(img/scenariosAll.jpg);
 	background-size: calc(400px * 6) calc(560px * 6);
-
 }
 
 .thething .scenario {
@@ -1989,6 +1991,14 @@ color: #773300;
 	display: none;
 }
 
+.clickable {
+	cursor: pointer;
+}
+
+.hidden {
+	display: none !important;
+}
+
 .slider {
 	height: 32px;
 	vertical-align: middle;
@@ -2016,6 +2026,11 @@ color: #773300;
 
 #selection_area .card {
   transition: opacity .2s;
+}
+#selection_area .scenario {
+	width: calc(400px * 0.5);
+	height: calc(560px * 0.5);
+	background-size: calc(400px * 6 * 0.5) calc(560px * 6 * 0.5); 
 }
 
 #selection_area_controls {

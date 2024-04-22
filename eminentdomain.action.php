@@ -3,7 +3,7 @@
 /**
  *------
  * BGA framework: © Gregory Isabelli <gisabelli@boardgamearena.com> & Emmanuel Colin <ecolin@boardgamearena.com>
- * EminentDomain implementation : © Alena Laskavaia <laskava@gmail.com>
+ * eminentdomain implementation : © Alena Laskavaia <laskava@gmail.com>
  *
  * This code has been produced on the BGA studio platform for use on http://boardgamearena.com.
  * See http://en.boardgamearena.com/#!doc/Studio for more information.
@@ -11,7 +11,7 @@
  * 
  * eminentdomain.action.php
  *
- * EminentDomain main action entry point
+ * EminentDomainXmakina main action entry point
  *
  *
  * In this file, you are describing all the methods that can be called from your
@@ -104,6 +104,13 @@ class action_eminentdomain extends APP_GameAction {
     public function playWait() {
         self::setAjaxMode();
         $this->game->action_playWait();
+        self::ajaxResponse();
+    }
+
+    public function selectScenario(){
+        self::setAjaxMode();
+        $card = self::getArg("card", AT_alphanum, true);
+        $this->game->action_selectScenario($card);
         self::ajaxResponse();
     }
 

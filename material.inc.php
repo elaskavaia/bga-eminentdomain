@@ -2,7 +2,7 @@
 /**
  *------
  * BGA framework: © Gregory Isabelli <gisabelli@boardgamearena.com> & Emmanuel Colin <ecolin@boardgamearena.com>
- * EminentDomain implementation : © Alena Laskavaia <laskava@gmail.com>
+ * eminentdomain implementation : © Alena Laskavaia <laskava@gmail.com>
  * 
  * This code has been produced on the BGA studio platform for use on http://boardgamearena.com.
  * See http://en.boardgamearena.com/#!doc/Studio for more information.
@@ -10,7 +10,7 @@
  *
  * material.inc.php
  *
- * EminentDomain game material description
+ * eminentdomain game material description
  *
  * Here, you can describe the material of your game with PHP variables.
  *   
@@ -73,6 +73,13 @@ $this->token_types = array(
   'type' => 'supply_planets',
   'name' => clienttranslate("Planets Deck"),
   'tooltip' => clienttranslate("Planets Supply Deck"),
+  'tooltip_action' => clienttranslate("Cannot inspect"),
+  'loc'=>1,'content'=>0,'counter'=>1 ,
+],
+'starting_worlds' => [
+  'type' => 'supply_planets',
+  'name' => clienttranslate("Starting Worlds Deck"),
+  'tooltip' => clienttranslate("Starting Worlds Supply Deck"),
   'tooltip_action' => clienttranslate("Cannot inspect"),
   'loc'=>1,'content'=>0,'counter'=>1 ,
 ],
@@ -201,6 +208,11 @@ $this->token_types = array(
 'supply_research' => [
   'type' => 'supply',
   'name' => clienttranslate("Research Roles Deck"),
+  'loc'=>1,'content'=>1,'counter'=>1 ,
+],
+'supply_scenarios' => [
+  'type' => 'supply',
+  'name' => clienttranslate("Scenarios Deck"),
   'loc'=>1,'content'=>1,'counter'=>1 ,
 ],
 'supply_tech_A' => [

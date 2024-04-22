@@ -3,7 +3,7 @@
 <!-- 
 --------
 -- BGA framework: © Gregory Isabelli <gisabelli@boardgamearena.com> & Emmanuel Colin <ecolin@boardgamearena.com>
--- EminentDomain implementation : © Alena Laskavaia <laskava@gmail.com>
+-- eminentdomain implementation : © Alena Laskavaia <laskava@gmail.com>
 -- 
 -- This code has been produced on the BGA studio platform for use on http://boardgamearena.com.
 -- See http://en.boardgamearena.com/#!doc/Studio for more information.
@@ -252,7 +252,6 @@
 							class="counter supply_counter slot_tooltip">0</div>
 					</div>
 					<div id="supply_fleet" class="supply_fleet supply_hidden"></div>
-
 				</div>
 
 				<div id="tech_display" class="tech_display inspect_display filter_control_area">
@@ -298,6 +297,11 @@
 					</div>
 
 				</div>
+
+				<div id="scenarios"
+					class="supply_hidden">
+				</div>
+
 				<div id="limbo" class="supply_hidden"></div>
 
 				<div id="dev_null"></div>

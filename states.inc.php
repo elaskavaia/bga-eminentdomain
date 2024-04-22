@@ -1,8 +1,9 @@
 <?php
+
 /**
  *------
  * BGA framework: © Gregory Isabelli <gisabelli@boardgamearena.com> & Emmanuel Colin <ecolin@boardgamearena.com>
- * EminentDomain implementation : © Alena Laskavaia <laskava@gmail.com>
+ * eminentdomain implementation : © Alena Laskavaia <laskava@gmail.com>
  *
  * This code has been produced on the BGA studio platform for use on http://boardgamearena.com.
  * See http://en.boardgamearena.com/#!doc/Studio for more information.
@@ -10,7 +11,7 @@
  * 
  * states.inc.php
  *
- * EminentDomain game states description
+ * eminentdomain game states description
  *
  */
 
@@ -50,116 +51,153 @@
 //    !! It is not a good idea to modify this file when a game is running !!
 
 if (!defined('STATE_END_GAME')) { // guard since this included multiple times
-    define("STATE_PLAYER_TURN_ACTION", 2);
-    define("STATE_GAME_TURN_NEXT_PLAYER_FOLLOW", 3);
-    define("STATE_GAME_TURN_NEXT_PLAYER", 4);
-    define("STATE_GAME_TURN_UPKEEP", 5);
-    define("STATE_PLAYER_TURN_ROLE", 6);
-    define("STATE_PLAYER_TURN_DISCARD", 7);
-    define("STATE_PLAYER_TURN_PRE_DISCARD", 12);
-    define("STATE_PLAYER_TURN_SURVEY", 8);
-    define("STATE_PLAYER_TURN_ROLE_EXTRA", 26); // // extra data collection for leader role
-    define("STATE_PLAYER_GAME_END", 9);
-    define("STATE_PLAYER_TURN_FOLLOW", 10);
-    define("STATE_PLAYER_TURN_SURVEY_FOLLOW", 11);
-    define("STATE_PLAYER_TURN_FOLLOW_EXTRA", 21); // extra data collection for follow role
-    define("STATE_PLAYER_TURN_ACTION_EXTRA", 22); // extra data collection for action 
-    define("STATE_END_GAME", 99);
+        define("STATE_PLAYER_TURN_ACTION", 2);
+        define("STATE_GAME_TURN_NEXT_PLAYER_FOLLOW", 3);
+        define("STATE_GAME_TURN_NEXT_PLAYER", 4);
+        define("STATE_GAME_TURN_UPKEEP", 5);
+        define("STATE_PLAYER_TURN_ROLE", 6);
+        define("STATE_PLAYER_TURN_DISCARD", 7);
+        define("STATE_PLAYER_TURN_PRE_DISCARD", 12);
+        define("STATE_PLAYER_TURN_SURVEY", 8);
+        define("STATE_PLAYER_TURN_ROLE_EXTRA", 26); // // extra data collection for leader role
+        define("STATE_PLAYER_GAME_END", 9);
+        define("STATE_PLAYER_TURN_FOLLOW", 10);
+        define("STATE_PLAYER_TURN_SURVEY_FOLLOW", 11);
+        define("STATE_PLAYER_TURN_FOLLOW_EXTRA", 21); // extra data collection for follow role
+        define("STATE_PLAYER_TURN_ACTION_EXTRA", 22); // extra data collection for action 
+        define("STATE_SCENARIO_SELECTION", 23);
+        define("STATE_SCENARIO_SELECTION_NEXT_PLAYER", 24);
+        define("STATE_GAME_PLAYER_SETUP", 25);
+        define("STATE_END_GAME", 99);
 }
 
- 
+
 $machinestates = array(
 
-    // The initial state. Please do not modify.
-    1 => array(
-        "name" => "gameSetup",
-        "description" => "",
-        "type" => "manager",
-        "action" => "stGameSetup",
-        "transitions" => array( "" => STATE_PLAYER_TURN_ACTION )
-    ),
-    
-    // Note: ID=2 => your first state
+        // The initial state. Please do not modify.
+        1 => array(
+                "name" => "gameSetup",
+                "description" => "",
+                "type" => "manager",
+                "action" => "stGameSetup",
+                "transitions" => array("" => STATE_SCENARIO_SELECTION)
+        ),
+        STATE_SCENARIO_SELECTION => array(
+                "name" => "scenarioSelection",
+                "action" => "st_selectScenario",
+                "type" => "activeplayer",
+                "description" => clienttranslate('${actplayer} must choose a scenario'),
+                "descriptionmyturn" => clienttranslate('${you} must choose to a scenario'),
+                "possibleactions" => array("selectScenario"),
+                "transitions" => array(
+                        "" => STATE_SCENARIO_SELECTION_NEXT_PLAYER
+                )
+        ),
+        STATE_SCENARIO_SELECTION_NEXT_PLAYER => array(
+                "name" => "nextPlayer",
+                "description" => "",
+                "type" => "game",
+                "action" => "st_scenarioNextPlayer",
+                "transitions" => array(
+                        "nextPlayer" => STATE_SCENARIO_SELECTION,
+                        "last" => STATE_GAME_PLAYER_SETUP
+                )
+        ),
+        STATE_GAME_PLAYER_SETUP => array(
+                "name" => "gamePlayerSetup",
+                "description" => '',
+                "type" => "game",
+                "action" => "st_gamePlayerSetup",
+                "updateGameProgression" => false,
+                "transitions" => array("" => STATE_PLAYER_TURN_ACTION)
+        ),
 
-    STATE_PLAYER_TURN_ACTION => array(
-    		"name" => "playerTurnAction",
-    		"description" => clienttranslate('${actplayer} may play an action'),
-    		"descriptionmyturn" => clienttranslate('${you} may play an action'),
-    		"type" => "activeplayer",
-            "args"=>"arg_playerTurnAction",
-            "possibleactions" => array( "playAction", "skipAction",  "playActivatePermanent", "playExtra" ),
-            "transitions" => array( 
-                    "next" => STATE_PLAYER_TURN_ROLE, 
-                    "loopback"=> STATE_PLAYER_TURN_ACTION,
-                    "last"=>STATE_GAME_TURN_UPKEEP)
-    ),
-    STATE_PLAYER_TURN_ROLE => array(
-            "name" => "playerTurnRole",
-            "description" => clienttranslate('${actplayer} must play a role'),
-            "descriptionmyturn" => clienttranslate('${you} must play a role'),
-            "type" => "activeplayer",
-            "args"=>"arg_playerTurnRole",
-            "possibleactions" => array( "playRole", "playActivatePermanent" ),
-            "transitions" => array( 
-                    "discard" => STATE_PLAYER_TURN_PRE_DISCARD, 
-                    "next" => STATE_GAME_TURN_NEXT_PLAYER_FOLLOW,
-                    "loopback"=>STATE_PLAYER_TURN_ROLE,
-                    "extra"=>STATE_PLAYER_TURN_ROLE_EXTRA)
-    ),
+        // Note: ID=2 => your first state
+
+        STATE_PLAYER_TURN_ACTION => array(
+                "name" => "playerTurnAction",
+                "description" => clienttranslate('${actplayer} may play an action'),
+                "descriptionmyturn" => clienttranslate('${you} may play an action'),
+                "type" => "activeplayer",
+                "args" => "arg_playerTurnAction",
+                "possibleactions" => array("playAction", "skipAction",  "playActivatePermanent", "playExtra"),
+                "transitions" => array(
+                        "next" => STATE_PLAYER_TURN_ROLE,
+                        "loopback" => STATE_PLAYER_TURN_ACTION,
+                        "last" => STATE_GAME_TURN_UPKEEP
+                )
+        ),
+        STATE_PLAYER_TURN_ROLE => array(
+                "name" => "playerTurnRole",
+                "description" => clienttranslate('${actplayer} must play a role'),
+                "descriptionmyturn" => clienttranslate('${you} must play a role'),
+                "type" => "activeplayer",
+                "args" => "arg_playerTurnRole",
+                "possibleactions" => array("playRole", "playActivatePermanent"),
+                "transitions" => array(
+                        "discard" => STATE_PLAYER_TURN_PRE_DISCARD,
+                        "next" => STATE_GAME_TURN_NEXT_PLAYER_FOLLOW,
+                        "loopback" => STATE_PLAYER_TURN_ROLE,
+                        "extra" => STATE_PLAYER_TURN_ROLE_EXTRA
+                )
+        ),
         STATE_PLAYER_TURN_PRE_DISCARD => array(
                 "name" => "playerTurnPreDiscard",
                 "description" => clienttranslate('${actplayer} may discard cards'),
                 "descriptionmyturn" => clienttranslate('${you} may discard some cards from your hand, if you do your turn will end'),
                 "type" => "activeplayer",
-                "args"=>"arg_playerTurnRole",
-                "possibleactions" => array( "playDiscard" , "playActivatePermanent", "playWait"  ),
+                "args" => "arg_playerTurnRole",
+                "possibleactions" => array("playDiscard", "playActivatePermanent", "playWait"),
                 "transitions" => array(
                         "next" => STATE_GAME_TURN_NEXT_PLAYER_FOLLOW,
-                        "loopback"=>STATE_PLAYER_TURN_PRE_DISCARD,
-                        "discard"=>STATE_PLAYER_TURN_PRE_DISCARD,
-                        "extra"=>STATE_PLAYER_TURN_ROLE_EXTRA)
+                        "loopback" => STATE_PLAYER_TURN_PRE_DISCARD,
+                        "discard" => STATE_PLAYER_TURN_PRE_DISCARD,
+                        "extra" => STATE_PLAYER_TURN_ROLE_EXTRA
+                )
         ),
         STATE_PLAYER_TURN_DISCARD => array(
                 "name" => "playerTurnDiscard",
                 "description" => clienttranslate('${actplayer} may discard cards'),
                 "descriptionmyturn" => clienttranslate('${you} may discard some cards from your hand'),
                 "type" => "activeplayer",
-                "args"=>"arg_playerTurnRole",
-                "possibleactions" => array( "playDiscard" , "playActivatePermanent" ),
-                "transitions" => array( 
+                "args" => "arg_playerTurnRole",
+                "possibleactions" => array("playDiscard", "playActivatePermanent"),
+                "transitions" => array(
                         "next" => STATE_GAME_TURN_UPKEEP,
-                        "loopback"=>STATE_PLAYER_TURN_DISCARD,
-                        "extra"=>STATE_PLAYER_TURN_ROLE_EXTRA)
+                        "loopback" => STATE_PLAYER_TURN_DISCARD,
+                        "extra" => STATE_PLAYER_TURN_ROLE_EXTRA
+                )
         ),
         STATE_PLAYER_TURN_SURVEY => array( // not used anymore, keep for backward compat
                 "name" => "playerTurnSurvey",
                 "description" => clienttranslate('${actplayer} must choose a planet to keep'),
                 "descriptionmyturn" => clienttranslate('${you} must choose a planet to keep'),
                 "type" => "activeplayer",
-                "args"=>"arg_playerTurnRole",
-                "possibleactions" => array( "playPick" ),
-                "transitions" => array (
+                "args" => "arg_playerTurnRole",
+                "possibleactions" => array("playPick"),
+                "transitions" => array(
                         "next" => STATE_GAME_TURN_NEXT_PLAYER_FOLLOW,
                         "role" => STATE_PLAYER_TURN_ROLE,
                         "extra" => STATE_PLAYER_TURN_ROLE_EXTRA
                 )
         ),
-        
+
         STATE_PLAYER_TURN_ROLE_EXTRA => array(
                 "name" => "playerTurnRoleExtra",
                 "description" => clienttranslate('${actplayer} ${state_prompt}'),
                 "descriptionmyturn" => clienttranslate('${you} ${state_prompt}'),
                 "type" => "activeplayer",
-                "args"=>"arg_playerTurnRoleExtra",
-                "possibleactions" => array( "playPick","playActivatePermanent","playExtra","playDiscard" ),
+                "args" => "arg_playerTurnRoleExtra",
+                "possibleactions" => array("playPick", "playActivatePermanent", "playExtra", "playDiscard"),
                 "transitions" => array(
                         "next" => STATE_GAME_TURN_NEXT_PLAYER_FOLLOW,
                         "survey" => STATE_PLAYER_TURN_SURVEY,
-                        "loopback"=>STATE_PLAYER_TURN_ROLE_EXTRA,
-                        "discard" => STATE_PLAYER_TURN_PRE_DISCARD, 
-                        "extra"=>STATE_PLAYER_TURN_ROLE_EXTRA)
+                        "loopback" => STATE_PLAYER_TURN_ROLE_EXTRA,
+                        "discard" => STATE_PLAYER_TURN_PRE_DISCARD,
+                        "extra" => STATE_PLAYER_TURN_ROLE_EXTRA
+                )
         ),
-        
+
         STATE_GAME_TURN_UPKEEP => array(
                 "name" => "gameTurnUpkeep",
                 "description" => clienttranslate('Cleanup...'),
@@ -171,30 +209,33 @@ $machinestates = array(
                         "action" => STATE_PLAYER_TURN_ACTION,
                         "role" => STATE_PLAYER_TURN_ROLE,
                         "next" =>  STATE_GAME_TURN_NEXT_PLAYER,
-                        "extra"=>STATE_PLAYER_TURN_ROLE_EXTRA
-                        ), 
+                        "extra" => STATE_PLAYER_TURN_ROLE_EXTRA
+                ),
         ),
-        
+
         STATE_PLAYER_TURN_SURVEY_FOLLOW => array( // not used anymore, keep for backward compat
                 "name" => "playerTurnSurveyFollow",
                 "description" => clienttranslate('${actplayer} must choose a planet to keep'),
                 "descriptionmyturn" => clienttranslate('${you} must choose a planet to keep'),
                 "type" => "activeplayer",
-                "args"=>"arg_playerTurnRole",
-                "possibleactions" => array( "playPick" ),
-                "transitions" => array( "next" => STATE_GAME_TURN_NEXT_PLAYER_FOLLOW,
-                        "extra"=>STATE_PLAYER_TURN_ROLE_EXTRA)
+                "args" => "arg_playerTurnRole",
+                "possibleactions" => array("playPick"),
+                "transitions" => array(
+                        "next" => STATE_GAME_TURN_NEXT_PLAYER_FOLLOW,
+                        "extra" => STATE_PLAYER_TURN_ROLE_EXTRA
+                )
         ),
         STATE_GAME_TURN_NEXT_PLAYER => array(
-            "name" => "gameTurnNextPlayer",
-            "description" => clienttranslate('Replenish...'),
-            "type" => "game",
-            "action" => "st_gameTurnNextPlayer",
-            "updateGameProgression" => true,
-            "transitions" => array(
+                "name" => "gameTurnNextPlayer",
+                "description" => clienttranslate('Replenish...'),
+                "type" => "game",
+                "action" => "st_gameTurnNextPlayer",
+                "updateGameProgression" => true,
+                "transitions" => array(
                         "next" => STATE_PLAYER_TURN_ACTION,
                         "loopback" =>  STATE_GAME_TURN_NEXT_PLAYER,
-                    "last" => STATE_END_GAME), // to test change to STATE_PLAYER_GAME_END
+                        "last" => STATE_END_GAME
+                ), // to test change to STATE_PLAYER_GAME_END
         ),
         STATE_GAME_TURN_NEXT_PLAYER_FOLLOW => array(
                 "name" => "gameTurnNextPlayerFollow",
@@ -205,46 +246,45 @@ $machinestates = array(
                 "transitions" => array(
                         "next" => STATE_PLAYER_TURN_FOLLOW,
                         "loopback" =>  STATE_GAME_TURN_NEXT_PLAYER_FOLLOW,
-                        "last"=>STATE_GAME_TURN_UPKEEP,
-                        
-                        ),
+                        "last" => STATE_GAME_TURN_UPKEEP,
+
+                ),
         ),
-        STATE_PLAYER_TURN_FOLLOW => array (
+        STATE_PLAYER_TURN_FOLLOW => array(
                 "name" => "playerTurnFollow",
                 "type" => "multipleactiveplayer",
                 "description" => clienttranslate('Other players must choose to Follow ${otherplayer}\'s "${role_name}" role or Dissent'),
                 "descriptionmyturn" => clienttranslate('${you} must choose to Follow ${otherplayer}\'s "${role_name}" role or Dissent'),
-                "possibleactions" => array ("playFollow","playDissent","playWait" ),
-                "transitions" => array (
+                "possibleactions" => array("playFollow", "playDissent", "playWait"),
+                "transitions" => array(
                         "next" => STATE_GAME_TURN_NEXT_PLAYER_FOLLOW,
                         "loopback" => STATE_PLAYER_TURN_FOLLOW,
-                        "extra"=>STATE_PLAYER_TURN_ROLE_EXTRA
+                        "extra" => STATE_PLAYER_TURN_ROLE_EXTRA
                 ),
-                "args" => "arg_playerTurnFollow" 
+                "args" => "arg_playerTurnFollow"
         ),
-       
+
         STATE_PLAYER_GAME_END => array(
                 "name" => "playerTurnGameEnd",
                 "description" => clienttranslate('${actplayer} must end the game (development state, remove before production)'),
                 "descriptionmyturn" => clienttranslate('${you} must end the game (development state, remove before production)'),
                 "type" => "activeplayer",
-                "args"=>"arg_playerTurnRole",
-                "possibleactions" => array( "skipAction" ),
-                "transitions" => array( "next" => STATE_END_GAME,
-                        "last" => STATE_END_GAME )
+                "args" => "arg_playerTurnRole",
+                "possibleactions" => array("skipAction"),
+                "transitions" => array(
+                        "next" => STATE_END_GAME,
+                        "last" => STATE_END_GAME
+                )
         ),
-   
-    // Final state.
-    // Please do not modify.
-   STATE_END_GAME => array(
-        "name" => "gameEnd",
-        "description" => clienttranslate("End of game"),
-        "type" => "manager",
-        "action" => "stGameEnd",
-        "args" => "argGameEnd"
-    )
+
+        // Final state.
+        // Please do not modify.
+        STATE_END_GAME => array(
+                "name" => "gameEnd",
+                "description" => clienttranslate("End of game"),
+                "type" => "manager",
+                "action" => "stGameEnd",
+                "args" => "argGameEnd"
+        )
 
 );
-
-
-

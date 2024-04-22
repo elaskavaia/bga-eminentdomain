@@ -5,7 +5,7 @@ require_once ('eminentdomain.game.php');
 // include real game class, it has to be on php inlude path
 // this can test if material file has not errors, run
 // php7 misc/mat_test.php
-class EminentDomainTest1 extends EminentDomain {
+class EminentDomainXmakinaTest1 extends EminentDomainXmakina {
     function __construct() {
         parent::__construct();
         include '../material.inc.php';
@@ -34,7 +34,7 @@ class EminentDomainTest1 extends EminentDomain {
         var_dump($data);
     }
 }
-$x = new EminentDomainTest1();
+$x = new EminentDomainXmakinaTest1();
 $x->testSanity();
 
 
