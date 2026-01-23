@@ -36,8 +36,7 @@
     }
     
     function processPlayerBlock($player_id, $player) {
-        global $g_user;
-        $cplayer = $g_user->get_id();
+        $cplayer = $this->getCurrentPlayerId();
         
         $color = $player ['player_color'];
         $name = $player ['player_name'];
@@ -50,8 +49,7 @@
     }
     
     function build_page($viewArgs) {
-        global $g_user;
-        $cplayer = $g_user->get_id();
+        $cplayer = $this->getCurrentPlayerId();
         // Get players & players number
         $players = $this->game->loadPlayersBasicInfos();
         $players_nbr = count($players);
