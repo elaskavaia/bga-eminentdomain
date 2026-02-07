@@ -107,6 +107,13 @@ class action_eminentdomain extends APP_GameAction {
         self::ajaxResponse();
     }
 
+    public function selectScenario(){
+        self::setAjaxMode();
+        $card = self::getArg("card", AT_alphanum, true);
+        $this->game->action_selectScenario($card);
+        self::ajaxResponse();
+    }
+
     function showDiscard() {
         self::setAjaxMode();
         $arg1 = self::getArg("place", AT_alphanum, true);

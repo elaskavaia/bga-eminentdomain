@@ -76,6 +76,13 @@ $this->token_types = array(
   'tooltip_action' => clienttranslate("Cannot inspect"),
   'loc'=>1,'content'=>0,'counter'=>1 ,
 ],
+'starting_worlds' => [
+  'type' => 'supply_planets',
+  'name' => clienttranslate("Starting Worlds Deck"),
+  'tooltip' => clienttranslate("Starting Worlds Supply Deck"),
+  'tooltip_action' => clienttranslate("Cannot inspect"),
+  'loc'=>1,'content'=>0,'counter'=>1 ,
+],
 'fighter_F' => [
   'type' => 'fighter',
   'name' => clienttranslate("Fighter"),
@@ -201,6 +208,11 @@ $this->token_types = array(
 'supply_research' => [
   'type' => 'supply',
   'name' => clienttranslate("Research Roles Deck"),
+  'loc'=>1,'content'=>1,'counter'=>1 ,
+],
+'supply_scenarios' => [
+  'type' => 'supply',
+  'name' => clienttranslate("Scenarios Deck"),
   'loc'=>1,'content'=>1,'counter'=>1 ,
 ],
 'supply_tech_A' => [
