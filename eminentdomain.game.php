@@ -3034,10 +3034,9 @@ class EminentDomain extends EuroGame {
                 if ($count + $perm_boost >= $colonies) {
                     // ready
                     $res [$planet] ['ready'] = true;
-                } else {
-                    $res [$planet] ['need'] = $colonies - ($count + $perm_boost);
-                    // not ready
                 }
+                // always set need (may be 0 or negative when ready via perm_boost)
+                $res [$planet] ['need'] = $colonies - ($count + $perm_boost);
             }
         }
         $colship = $this->playerHasCard('card_tech_E_21', $color, true);
