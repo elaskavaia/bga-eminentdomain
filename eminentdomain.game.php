@@ -2076,9 +2076,9 @@ class EminentDomain extends EuroGame {
         $specialization = $this->playerHasCard('card_tech_2_73', $color);
         
         $info = $this->tokens->getTokenInfo($token);
-        if ($info ['state'] == RESOURCE_STATE_COLONIZE_BOOST || $info ['state'] == RESOURCE_STATE_MARKER) {
-            // this is used as boost not to be traded
-            $this->userAssertTrue(self::_("Cannot trade this resource, it is used as marker or boost"));
+        if ($info ['state'] == RESOURCE_STATE_COLONIZE_BOOST || $info ['state'] == RESOURCE_STATE_MARKER || $info ['state'] == RESOURCE_STATE_BLOCKER) {
+            // this is used as marker, boost, or blocker - not to be traded
+            $this->userAssertTrue(self::_("Cannot trade this resource, it is used as marker, boost, or blocker"));
         }
         $restype = '';
         if (startsWith($token, 'fighter')) {
