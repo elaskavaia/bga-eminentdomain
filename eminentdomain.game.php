@@ -2663,6 +2663,11 @@ class EminentDomain extends EuroGame {
                     $this->dbIncScoreValueAndNotify($player_id, -1, '', 'game_vptrade', [ 'player_id' => $player_id ]);
                     $this->dbSetTokensLocation([ $vp ], 'stock_vp', 0, clienttranslate('${player_name} returns ${token_div_count} to supply'), [ 
                             'player_id' => $player_id_o ]);
+                    // BUG 50797: We need to update the displayed scores
+                    $color = $this->getPlayerColor($player_id_o);
+                    $score = count($this->tokens->getTokensOfTypeInLocation('vp', "tableau_$color"));
+                    $this->notifyCounterDirect("vp_${color}_counter", $score, '', [ 'place' => $card,'inc' => -1 ]);
+                    $this->notifyCounter("stock_vp");
                 }
             }
         }
