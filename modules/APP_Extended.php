@@ -410,14 +410,6 @@ abstract class APP_Extended extends Table {
         $mask &= ~ $bit; // clear bit
         $this->setGameStateValue($variable, $mask);
     }
-    function errordump( $label, $object )
-    {
-        global $g_trace;
-        ob_start();
-        var_dump( $object );
-        $g_trace->log( TLL_error, $label.' = '.ob_get_contents() );
-        ob_clean();
-    }
     
     /*
      * @Override to trim, because debugging does not work well with spaces (i.e. not at all).
