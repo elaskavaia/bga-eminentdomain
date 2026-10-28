@@ -21,7 +21,7 @@ abstract class EuroGame extends APP_Extended {
 
     public function __construct() {
         parent::__construct();
-        $this->tokens = new Tokens();
+        $this->tokens = new Tokens($this);
     }
 
     protected function setCounter(&$array, $key, $value) {
