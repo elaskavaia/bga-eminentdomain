@@ -84,11 +84,6 @@ class EminentDomain extends EuroGame {
         }
     }
 
-    protected function getGameName() {
-        // Used for translations and stuff. Please do not modify.
-        return "eminentdomain";
-    }
-
     function isEscalationVariant() {
         return $this->getGameStateValue('escalation_variant') == 2;
     }

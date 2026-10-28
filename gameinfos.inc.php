@@ -15,14 +15,7 @@ $gameinfos = array(
 // Name of the game in English (will serve as the basis for translation) 
 'game_name' => 'Eminent Domain (Expansions)',
 
-// Game designer (or game designers, separated by commas)
-'designer' => 'Seth Jaffee',
-
-// Game artist (or game artists, separated by commas)
-'artist' => 'Gavan Brown, plus more',
 //'artist' => 'G. Brown,E. J. Carter,C. Conrad,J. Deveraturda,R. Johnson,P. McEvoy,H. Schneider,J. W. Strehle',
-// Year of FIRST publication of this game. Can be negative.
-'year' => 2011,
 
 // Game publisher
 'publisher' => 'Tasty Minstrel Games',
@@ -68,24 +61,8 @@ $gameinfos = array(
 // Example: 'tie_breaker_description' => totranslate( "Number of remaining cards in hand" ),
 'tie_breaker_description' => totranslate("In case of a tie, the tied player with the most Resource and Fighter tokens in their Empire is the winner."),
 
-// Game is "beta". A game MUST set is_beta=1 when published on BGA for the first time, and must remains like this until all bugs are fixed.
-'is_beta' => 1,                     
-
 // Is this game cooperative (all players wins together or loose together)
 'is_coop' => 0, 
-
-
-// Complexity of the game, from 0 (extremely simple) to 5 (extremely complex)
-'complexity' => 3,    
-
-// Luck of the game, from 0 (absolutely no luck in this game) to 5 (totally luck driven)
-'luck' => 3,    
-
-// Strategy of the game, from 0 (no strategy can be setup) to 5 (totally based on strategy)
-'strategy' => 3,    
-
-// Diplomacy of the game, from 0 (no interaction in this game) to 5 (totally based on interaction and discussion between players)
-'diplomacy' => 3,    
 
 // Colors attributed to players
 'player_colors' => array( "ff0000", "008000", "0000ff", "ffa500", "773300" ),
@@ -110,40 +87,9 @@ $gameinfos = array(
     'max' => null
 ),
 
-// Games categories
-//  You can attribute a maximum of FIVE "tags" for your game.
-//  Each tag has a specific ID (ex: 22 for the category "Prototype", 101 for the tag "Science-fiction theme game")
-//  Please see the "Game meta information" entry in the BGA Studio documentation for a full list of available tags:
-//  http://en.doc.boardgamearena.com/Game_meta-information:_gameinfos.inc.php
-//  IMPORTANT: this list should be ORDERED, with the most important tag first.
-//  IMPORTANT: it is mandatory that the FIRST tag is 1, 2, 3 and 4 (= game category)
-'tags' => array( 3,11,101,200,204 ),
-
-
-// Game presentation
-// Short game presentation text (6-9 lines) that will appear on the game description page, structured as an array of paragraphs.
-// Each paragraph must be wrapped with totranslate() for translation and should not contain html (plain text without formatting).
-// A good length for this text is between 100 and 150 words (about 6 to 9 lines on a standard display)
-// Example:
 // 'presentation' => array(
 // totranslate("This wonderful game is about geometric shapes!"),
 // totranslate("It was awarded best triangle game of the year in 2005 and nominated for the Spiel des Jahres."),
 // ...
 // ),
-'presentation' => array(
-    totranslate("Survey the galaxy to expand your Empire! Will you colonize nearby planets or take them by force? Produce resources for trade and research new technologies to build the best empire and win the game!"),
-    totranslate("Eminent Domain is an empire building game in which your empire’s abilities are based on a deck of Role cards. Every turn you must choose a role to execute and in doing so you will add one of those Role cards to your deck. When executing a role, you may Boost its effect by playing cards out of your hand matching the role you have chosen."),
-    totranslate("For example, the more research done by your empire, the better your empire gets at doing research - because there will be more research cards in your deck!"),
-),
-
-
-//////// BGA SANDBOX ONLY PARAMETERS (DO NOT MODIFY)
-
-// simple : A plays, B plays, C plays, A plays, B plays, ...
-// circuit : A plays and choose the next player C, C plays and choose the next player D, ...
-// complex : A+B+C plays and says that the next player is A+B
-'is_sandbox' => false,
-'turnControl' => 'simple'
-
-////////
 );
