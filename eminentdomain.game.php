@@ -2114,8 +2114,9 @@ class EminentDomain extends EuroGame {
         
         $info = $this->tokens->getTokenInfo($token);
         // fleet fighters share the blocker state value
-        $isBlocker = $info ['state'] == RESOURCE_STATE_BLOCKER && $info ['location'] != "tableau_$color";
-        if ($info ['state'] == RESOURCE_STATE_COLONIZE_BOOST || $info ['state'] == RESOURCE_STATE_MARKER || $isBlocker) {
+        $state = $info ['state'] ?? null;
+        $isBlocker = $state == RESOURCE_STATE_BLOCKER && $info ['location'] != "tableau_$color";
+        if ($state == RESOURCE_STATE_COLONIZE_BOOST || $state == RESOURCE_STATE_MARKER || $isBlocker) {
             // this is used as marker, boost, or blocker - not to be traded
             $this->userAssertTrue(self::_("Cannot trade this resource, it is used as marker, boost, or blocker"));
         }
