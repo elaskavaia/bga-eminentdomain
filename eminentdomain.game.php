@@ -142,7 +142,29 @@ class EminentDomain extends EuroGame {
         for ($i = 13; $i <= 16; $i++) {
             $this->dbSetTokenLocation("card_role_colonize_$i","cols");
         }
-        
+
+    }
+
+    function debug_colonyShip(bool $ready = false) {
+        $color = $this->getPlayerColor($this->getCurrentPlayerId());
+        $colonies = array_keys($this->tokens->getTokensOfTypeInLocation('card_role_colonize', 'supply_colonize'));
+        foreach ( array_keys($this->tokens->getTokensOfTypeInLocation('card_planet', 'supply_planets')) as $planet ) {
+            $cost = $this->token_types [$planet] ['c'];
+            if ($cost >= 2 && $cost < 99)
+                break;
+        }
+        $this->dbSetTokenLocation('card_tech_E_21', "tableau_$color", 1, '');
+        $this->dbSetTokenLocation($planet, "tableau_$color", 0, '');
+        foreach ( array_splice($colonies, 0, 2) as $colony )
+            $this->dbSetTokenLocation($colony, 'card_tech_E_21', RESOURCE_STATE_COLONIZE_BOOST, '');
+        if ($ready) {
+            foreach ( array_splice($colonies, 0, $cost) as $colony )
+                $this->dbSetTokenLocation($colony, $planet, RESOURCE_STATE_COLONIZE_BOOST, '');
+        }
+        foreach ( array_splice($colonies, 0, 1) as $colony )
+            $this->dbSetTokenLocation($colony, "hand_$color", 0, '');
+        $this->dbSetTokenLocation('card_tech_1_21', "hand_$color", 0, '');
+        $this->debugConsole("colony ship setup: $planet cost $cost");
     }
 
     function initTables() {
@@ -2017,10 +2039,16 @@ class EminentDomain extends EuroGame {
             //$this->warn("colship $colship ".toJson($choices_arr));
             while ( count($choices_arr) > 0 ) {
                 $command = $choices_arr [0] [0];
-                if ($command == 'c') {
+                if ($command == 'm') {
                     $params = array_shift($choices_arr);
                     $colony = $params [2];
                     $planet2 = $params [1];
+                    $info = $this->tokens->getTokenInfo($colony);
+                    $this->systemAssertTrue("Cannot move colony $colony to $planet2",
+                            startsWith($colony, 'card_') && $info ['state'] == RESOURCE_STATE_COLONIZE_BOOST &&
+                            $this->tokens->getTokenLocation($info ['location']) == "tableau_$color" &&
+                            $this->tokens->getTokenLocation($planet2) == "tableau_$color" &&
+                            ($planet2 == $colship || ($this->isPlanet($planet2) && $this->tokens->getTokenState($planet2) == 0)));
                     $this->saction_Colonize($colony, $color, $planet2);
                 } else {
                     break;
@@ -3034,9 +3062,10 @@ class EminentDomain extends EuroGame {
                 if ($count + $perm_boost >= $colonies) {
                     // ready
                     $res [$planet] ['ready'] = true;
+                } else {
+                    $res [$planet] ['need'] = $colonies - ($count + $perm_boost);
+                    // not ready
                 }
-                // always set need (may be 0 or negative when ready via perm_boost)
-                $res [$planet] ['need'] = $colonies - ($count + $perm_boost);
             }
         }
         $colship = $this->playerHasCard('card_tech_E_21', $color, true);

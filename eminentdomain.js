@@ -929,6 +929,7 @@ define(["dojo", "dojo/_base/declare", "ebg/core/gamegui", "ebg/counter",
 						var choices_arr = this.clientStateArgs.choices;
 						for (var i = 0; i < choices_arr.length; i++) {
 							var element_a = choices_arr[i];
+							if (element_a[0] == 'm') continue; // colony move target can still be settled
 							var operands = element_a;
 							var element = operands.length > 1 ? operands[1] : operands[0];
 							if ($(element)) dojo.addClass(element, 'selected');
@@ -2484,56 +2485,57 @@ define(["dojo", "dojo/_base/declare", "ebg/core/gamegui", "ebg/counter",
 										}
 									}
 								}
-								if (need > 0) {
-									var settling_planet = card_id;
-									if (this.playerHasOnTableau('card_tech_E_21')) { // colony ship
-										this.clientStateArgs.unprocessed_choices += "!";
-										if (this.commitOperationAndSubmit(action, settling_planet)) {
-											this.setClientStateCustom('clRedistributeColonies', _('Redistribute Colonies: Select colonies, then select a planet to move them to'), [], {
-												onUpdateActionButtons: (args) => {
-													dojo.query(".card > .card").addClass('active_slot');
-													dojo.query(".tableau_" + this.player_color + " .card_planet.state_0").addClass('active_slot');
-													dojo.query(".tableau_" + this.player_color + " .coloniseable").addClass('active_slot');
-													this.addDoneButton();
-													//this.addActionButton('button_done', _("Done Reditributing"), () => {
-													//	this.commitOperationAndSubmit('s', settling_planet);
-													//});
-												},
-												onCard: (id) => {
-													if (!this.isActiveSlot(id)) return false;
-													if (!this.isCurrentPlayerActive(id)) return false;
+								if (this.playerHasOnTableau('card_tech_E_21')) { // colony ship
+									// moves bypass the op queue, so a pending 2nd settle of Improved Colonize does not block them
+									if (!this.commitOperation(action, card_id)) return;
+									var tableau = ".tableau_" + this.player_color;
+									this.setClientStateCustom('clRedistributeColonies', _('Redistribute Colonies: Select colonies, then select a planet to move them to'), [], {
+										onUpdateActionButtons: (args) => {
+											dojo.query(tableau + " .card > .card").addClass('active_slot');
+											dojo.query(tableau + " .card_planet.state_0").addClass('active_slot');
+											dojo.query(tableau + " .coloniseable").addClass('active_slot');
+											// planet settled earlier in this action still looks unsettled on client
+											this.clientStateArgs.choices.forEach((c) => {
+												if ((c[0] == 's' || c[0] == 'S') && c[1] != card_id)
+													dojo.query("#" + c[1] + ", #" + c[1] + " > .card").removeClass('active_slot');
+											});
+											this.addActionButton('button_done', _("Done"), () => this.actionPromptAndCommit());
+											//this.addActionButton('button_done', _("Done Reditributing"), () => {
+											//	this.commitOperationAndSubmit('s', settling_planet);
+											//});
+										},
+										onCard: (id) => {
+											if (!this.isActiveSlot(id)) return false;
+											if (!this.isCurrentPlayerActive(id)) return false;
 
 
-													if ($(id).parentNode.id.startsWith("card")) {
-														// colony
-														dojo.addClass(id, 'selected');
-													} else {
-														// planet
-														var planet = id;
-														var res = dojo.query(".card > .card.selected");
-														if (res.length == 0) {
-															this.showError(_('Nothing is selected'));
-															return;
-														}
-														res.forEach((node) => {
-															var colony = node.id;
-															this.clientStateArgs.unprocessed_choices += "c";
-															if (this.commitOperation('c', planet, colony)) {
-																dojo.removeClass(colony, 'selected');
-																this.placeTokenLocal(colony, planet, 2);
-															};
-														});
-													}
-
+											if ($(id).parentNode.id.startsWith("card")) {
+												// colony
+												dojo.toggleClass(id, 'selected');
+											} else {
+												// planet
+												var planet = id;
+												var res = dojo.query(tableau + " .card > .card.selected");
+												if (res.length == 0) {
+													this.showError(_('Nothing is selected'));
 													return true;
 												}
-											});
+												res.forEach((node) => {
+													var colony = node.id;
+													this.clientStateArgs.choices.push(['m', planet, colony]);
+													dojo.removeClass(colony, 'selected');
+													this.placeTokenLocal(colony, planet, 14);
+												});
+											}
+
+											return true;
 										}
-										return;
-									} else {
-										this.showError(_('Not enough colonies to Settle this planet'));
-										return;
-									}
+									});
+									return;
+								}
+								if (need > 0) {
+									this.showError(_('Not enough colonies to Settle this planet'));
+									return;
 								}
 							}
 							return this.commitOperationAndSubmit(action, card_id);
