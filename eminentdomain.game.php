@@ -167,6 +167,15 @@ class EminentDomain extends EuroGame {
         $this->debugConsole("colony ship setup: $planet cost $cost");
     }
 
+    function debug_weaponsEmporium() {
+        $color = $this->getPlayerColor($this->getCurrentPlayerId());
+        $this->dbSetTokenLocation('card_tech_2_74', "tableau_$color", 1, '');
+        $this->dbSetTokensLocation($this->dbGetFreeFighterInfo('F', 3, true), "tableau_$color", 1, '');
+        $produce = $this->tokens->getTokenOfTypeInLocation('card_role_produce', 'supply_produce');
+        $this->dbSetTokenLocation($produce ['key'], "hand_$color", 0, '');
+        $this->debugConsole("weapons emporium setup");
+    }
+
     function initTables() {
         //srand(null);// XXX!
         $players = $this->loadPlayersBasicInfos();
@@ -2104,7 +2113,9 @@ class EminentDomain extends EuroGame {
         $specialization = $this->playerHasCard('card_tech_2_73', $color);
         
         $info = $this->tokens->getTokenInfo($token);
-        if ($info ['state'] == RESOURCE_STATE_COLONIZE_BOOST || $info ['state'] == RESOURCE_STATE_MARKER || $info ['state'] == RESOURCE_STATE_BLOCKER) {
+        // fleet fighters share the blocker state value
+        $isBlocker = $info ['state'] == RESOURCE_STATE_BLOCKER && $info ['location'] != "tableau_$color";
+        if ($info ['state'] == RESOURCE_STATE_COLONIZE_BOOST || $info ['state'] == RESOURCE_STATE_MARKER || $isBlocker) {
             // this is used as marker, boost, or blocker - not to be traded
             $this->userAssertTrue(self::_("Cannot trade this resource, it is used as marker, boost, or blocker"));
         }
