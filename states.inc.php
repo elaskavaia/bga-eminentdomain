@@ -70,17 +70,6 @@ if (!defined('STATE_END_GAME')) { // guard since this included multiple times
  
 $machinestates = array(
 
-    // The initial state. Please do not modify.
-    1 => array(
-        "name" => "gameSetup",
-        "description" => "",
-        "type" => "manager",
-        "action" => "stGameSetup",
-        "transitions" => array( "" => STATE_PLAYER_TURN_ACTION )
-    ),
-    
-    // Note: ID=2 => your first state
-
     STATE_PLAYER_TURN_ACTION => array(
     		"name" => "playerTurnAction",
     		"description" => clienttranslate('${actplayer} may play an action'),
@@ -233,17 +222,6 @@ $machinestates = array(
                 "transitions" => array( "next" => STATE_END_GAME,
                         "last" => STATE_END_GAME )
         ),
-   
-    // Final state.
-    // Please do not modify.
-   STATE_END_GAME => array(
-        "name" => "gameEnd",
-        "description" => clienttranslate("End of game"),
-        "type" => "manager",
-        "action" => "stGameEnd",
-        "args" => "argGameEnd"
-    )
-
 );
 
 

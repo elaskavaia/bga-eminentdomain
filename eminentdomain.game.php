@@ -118,6 +118,7 @@ class EminentDomain extends EuroGame {
             $this->error("Fatal error while creating game");
             $this->dump('err', $e);
         }
+        return STATE_PLAYER_TURN_ACTION;
     }
 
     function debug_initTables() {
